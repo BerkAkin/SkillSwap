@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Contracts\SkillServiceInterface;
+use App\DTOs\SkillDTOs\ShowDTO;
 use App\DTOs\SkillDTOs\StoreDTO;
 use App\Models\Skill;
 
@@ -23,7 +24,10 @@ class SkillService implements SkillServiceInterface
     }
 
 
-    public function Find(){}
+    public function Find(ShowDTO $DTO){
+        return Skill::findOrFail($DTO->id);
+    }
+
     public function Update(){}
     public function Delete(){}
 
