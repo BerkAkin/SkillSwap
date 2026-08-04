@@ -2,13 +2,11 @@
 
 namespace App\DTOs\SkillDTOs;
 
-class ShowDTO
+final readonly class ShowDTO
 {
-    /**
-     * Create a new class instance.
-     */
-    public function __construct()
-    {
-        //
+    public function __construct(public int $id){}
+    public static function fromRoute(int $id):self{
+        return new self($id);
     }
+
 }
