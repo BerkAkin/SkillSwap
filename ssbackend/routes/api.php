@@ -13,11 +13,11 @@ Route::post('/login',[AuthController::class,'login']);
 
 
 Route::get('/skills',[SkillController::class,'index']);
-Route::get('/skills/{skill}',[SkillController::class,'show']);
+Route::get('/skills/{id}',[SkillController::class,'show']);
 
 
 Route::middleware(['auth:sanctum','role:admin'])->group(function(){
-    Route::put('/skills/{skill}',[SkillController::class,'update']);
-    Route::delete('/skill/{skill}',[SkillController::class,'destroy']);
+    Route::put('/skills/{id}',[SkillController::class,'update']);
+    Route::delete('/skills/{id}',[SkillController::class,'destroy']);
     Route::post('/skills',[SkillController::class,'store']);
 });
