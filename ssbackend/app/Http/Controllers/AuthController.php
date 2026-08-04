@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use App\Services\AuthService;
+use App\Contracts\AuthServiceInterface;
 use App\Http\Requests\AuthRequests\LoginRequest;
 use App\Http\Requests\AuthRequests\MeRequest;
 use App\Http\Requests\AuthRequests\RegisterRequest;
@@ -16,7 +16,7 @@ use App\DTOs\AuthDTOs\RegisterDTO;
 class AuthController extends Controller
 {
 
-    public function __construct(private readonly AuthService $service) {}
+    public function __construct(private readonly AuthServiceInterface $service) {}
 
     public function Register(RegisterRequest $request):JsonResponse{
 
