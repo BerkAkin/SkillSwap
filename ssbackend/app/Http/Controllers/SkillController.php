@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use App\Contracts\SkillServiceInterface;
+use App\DTOs\SkillDTOs\DestroyDTO;
 use App\Http\Requests\SkillRequests\StoreRequest;
 use App\Http\Resources\SkillResources\GetResource;
 use App\DTOs\SkillDTOs\StoreDTO;
 use App\DTOs\SkillDTOs\ShowDTO;
+use App\DTOs\SkillDTOs\UpdateDTO;
+use App\Http\Requests\SkillRequests\UpdateRequest;
 
 class SkillController extends Controller
 {
@@ -40,6 +43,21 @@ class SkillController extends Controller
     }
 
 
-    public function update(){}
-    public function destroy(){}
+    public function update(int $id, UpdateRequest $request){
+        $dto = UpdateDTO::fromArray($request->validated(),$id);
+        $result = $this->service->Update($dto);
+        return response()->json([
+            'message'=>'Skill Updated Successfully',
+            'data'=> $result,
+        ],200);
+    }
+
+
+    public function destroy(int $id){
+        $dto = DestroyDTO::fromRoute($id);
+        $this->service->Destroy($dto);
+        return response()->json([
+            'message'=>'Skill deleted successfully',
+        ],201);
+    }
 }
