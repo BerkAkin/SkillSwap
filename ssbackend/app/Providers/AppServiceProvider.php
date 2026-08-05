@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use App\Contracts\AuthServiceInterface;
 use App\Contracts\SkillServiceInterface;
+use App\Contracts\SocialServiceInterface;
 use App\Services\AuthService;
 use App\Services\SkillService;
+use App\Services\SocialService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -17,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(AuthServiceInterface::class,AuthService::class);
         $this->app->bind(SkillServiceInterface::class,SkillService::class);
+        $this->app->bind(SocialServiceInterface::class,SocialService::class);
     }
 
     /**
