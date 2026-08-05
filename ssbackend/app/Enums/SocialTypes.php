@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Enums;
 
-enum SocialType:string
+enum SocialTypes: string
 {
     case Facebook = 'facebook';
     case Instagram = 'instagram';
