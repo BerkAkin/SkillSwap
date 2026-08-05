@@ -2,23 +2,21 @@
 
 namespace App\Models;
 
-use App\SocialType;
+use App\Enums\SocialTypes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
-use Override;
+
 
 class Social extends Model
 {
-    use HasFactory,Notifiable; 
-    protected $fillable = [];
+    use HasFactory; 
+    protected $fillable = ['type'];
     protected $hidden = [];
 
-    #[Override]
     protected function casts()
     {
         return [
-            'type'=> SocialType::class,
+            'type'=> SocialTypes::class,
         ];
     }
 
