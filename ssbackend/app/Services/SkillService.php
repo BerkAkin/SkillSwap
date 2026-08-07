@@ -2,48 +2,29 @@
 
 namespace App\Services;
 
-use Illuminate\Database\Eloquent\Collection;
 use App\Contracts\SkillServiceInterface;
 use App\Models\Skill;
-use App\DTOs\SkillDTOs\DestroyDTO;
-use App\DTOs\SkillDTOs\ShowDTO;
 use App\DTOs\SkillDTOs\StoreDTO;
 use App\DTOs\SkillDTOs\UpdateDTO;
 
-class SkillService implements SkillServiceInterface
+class SkillService extends BaseService implements SkillServiceInterface 
 {
-    public function __construct(){ }
-
-    public function GetAll() : Collection{
-        return Skill::all();
-    }
-
+    protected string $model = Skill::class;
 
     public function Create(StoreDTO $DTO): Skill{
-        return Skill::create([
+        $skill = Skill::create([
             'name'=>$DTO->name,
             'description' => $DTO->description,
         ]);
+        return $skill;
     }
-
-
-    public function Find(ShowDTO $DTO) : ?Skill{
-        return Skill::findOrFail($DTO->id);
-    }
-
     public function Update(UpdateDTO $DTO) : ?Skill{
-        $skill = Skill::findOrFail($DTO->id);
+        $skill = $this->Find($DTO->id);
         $skill->update([
             'name'=>  $DTO->name,
             'description' => $DTO->description,
         ]);
         return $skill;
-    }
-
-
-
-    public function Destroy(DestroyDTO $DTO){
-        Skill::findOrFail($DTO->id)->delete();
     }
 
 }
