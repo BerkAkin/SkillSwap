@@ -9,14 +9,15 @@ use App\DTOs\SocialDTOs\UpdateDTO;
 
 class SocialService extends BaseService implements SocialServiceInterface
 {
+    protected string $model = Social::class;
 
     public function Create(StoreDTO $DTO): Social{
-        $exists = Social::where('type', $DTO->type)->exists();
+        $exists = $this->model::where('type', $DTO->type)->exists();
         if ($exists) {
             throw new \Exception('Social is already registered');
         }
 
-        $social = Social::create(['type'=> $DTO->type]);
+        $social = $this->model::create(['type'=> $DTO->type]);
         return $social;
     }
 
