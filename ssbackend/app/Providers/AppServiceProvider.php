@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Contracts\AchievementServiceInterface;
 use App\Contracts\AuthServiceInterface;
 use App\Contracts\SettingServiceInterface;
 use App\Contracts\SkillServiceInterface;
 use App\Contracts\SocialServiceInterface;
+use App\Services\AchievementService;
 use App\Services\AuthService;
 use App\Services\SettingService;
 use App\Services\SkillService;
@@ -23,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(SkillServiceInterface::class,SkillService::class);
         $this->app->bind(SocialServiceInterface::class,SocialService::class);
         $this->app->bind(SettingServiceInterface::class, SettingService::class);
+        $this->app->bind(AchievementServiceInterface::class,AchievementService::class);
     }
 
     /**
