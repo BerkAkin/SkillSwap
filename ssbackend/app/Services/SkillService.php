@@ -12,7 +12,7 @@ class SkillService extends BaseService implements SkillServiceInterface
     protected string $model = Skill::class;
 
     public function Create(StoreDTO $DTO): Skill{
-        $skill = Skill::create([
+        $skill = $this->model::create([
             'name'=>$DTO->name,
             'description' => $DTO->description,
         ]);
