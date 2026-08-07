@@ -10,7 +10,7 @@ class Setting extends Model
 {
     use HasFactory,Notifiable;   
     protected $hidden = [];
-    protected $fillable = [];
+    protected $fillable = ['name','description'];
 
     public function users(){
         return $this->belongsToMany(User::class)
