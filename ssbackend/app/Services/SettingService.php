@@ -12,7 +12,7 @@ class SettingService extends BaseService implements SettingServiceInterface
     protected string $model = Setting::class;
 
     public function Create(StoreDTO $DTO): ?Setting{
-        $setting = Setting::create([
+        $setting = $this->model::create([
             'name'=> $DTO->name,
             'description' => $DTO->description,
         ]);
