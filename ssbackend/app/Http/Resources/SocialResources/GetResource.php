@@ -11,8 +11,8 @@ class GetResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'type'=>$this->type,
             'id' => $this->id,
+            'type'=>$this->type,
         ];
     }
 }

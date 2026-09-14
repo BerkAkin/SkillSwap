@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('password');
             $table->enum('gender',['m','f']);
             $table->enum('isActive',['t','f'])->default('t');
-            $table->string('role')->default('user');
+            $table->string('role')->default('admin');
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();

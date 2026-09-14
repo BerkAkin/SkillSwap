@@ -1,0 +1,42 @@
+.link{
+    font-weight: 400;
+    color: rgb(150, 150, 150);
+}
+.link:hover{
+    color: #0891b2;
+    transform: scale(1.1);
+    transition: ease-in-out 0.2s;
+}
+
+.active-link{
+    font-size: larger;
+    color: #f97316 ;
+    transition: ease-in-out 0.1s;
+}
+
+
+.auth-link{
+    border:#ea580c 1px solid;
+    font-weight: 400;
+    color: #f97316;
+    cursor: pointer;
+}
+
+.auth-link:hover{
+    color: white;
+    background-color:#f97316;
+    transform: scale(1.1);
+    transition: ease-in-out 0.2s;
+}
+
+.active-auth-link{
+    font-size: larger;
+    color: #f97316 ;
+    transition: ease-in-out 0.1s;
+}
+
+
+.active-auth-link:hover{
+    color:white ;
+    transition: ease-in-out 0.1s;
+}

@@ -14,9 +14,14 @@ return new class extends Migration
         Schema::create('meetings',function(Blueprint $table){
             $table->id();
             $table->foreignId('advert_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('offer_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('adverter_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('offerer_id')->constrained('users')->cascadeOnDelete();
             $table->string('adverter_approval');
             $table->string('offerer_approval');
             $table->string('status');
+            $table->foreignId('meeting_type_id')->constrained()->cascadeOnDelete();
+            $table->date('date');
             $table->timestamps();
         });
     }

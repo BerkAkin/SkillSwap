@@ -2,12 +2,12 @@
 
 namespace App\Services;
 
-use App\Contracts\SettingServiceInterface;
+use App\Contracts\ISettingService;
 use App\Models\Setting;
 use App\DTOs\SettingDTOs\StoreDTO;
 use App\DTOs\SettingDTOs\UpdateDTO;
 
-class SettingService extends BaseService implements SettingServiceInterface
+class SettingService extends BaseService implements ISettingService
 {
     protected string $model = Setting::class;
 

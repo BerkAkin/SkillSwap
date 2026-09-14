@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\app\enums\StatusTypes;
+use App\Enums\StatusTypes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -11,10 +11,19 @@ use Override;
 class Meeting extends Model
 {
     use HasFactory,Notifiable;
-    protected $fillable = [];
+    protected $fillable = [
+        'advert_id',
+        'offer_id',
+        'adverter_id',
+        'offerer_id',
+        'adverter_approval',
+        'offerer_approval',
+        'meeting_type_id',
+        'status',
+        'date',
+    ];
     protected $hidden = [];
 
-    #[Override]
     protected function casts():array
     {
         return [
@@ -24,15 +33,23 @@ class Meeting extends Model
         ];
     }
 
-    public function adverts(){
+    public function advert(){
         return $this->belongsTo(Advert::class);
     }
 
-    public function users(){
-        return $this->belongsToMany(User::class);
+    public function offer(){
+        return $this->belongsTo(Offer::class);
     }
 
-    public function meetingTypes(){
+    public function adverter(){
+        return $this->belongsTo(User::class,'adverter_id');
+    }
+
+    public function offerer(){
+        return $this->belongsTo(User::class,'offerer_id');
+    }
+
+    public function meetingType(){
         return $this->belongsTo(MeetingType::class);
     }
 }

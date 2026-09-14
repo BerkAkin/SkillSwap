@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('advert_id')->constrained()->cascadeOnDelete();
             $table->foreignId('offer_id')->constrained()->cascadeOnDelete();
-            $table->string('adverter_user_id');
-            $table->string('offerer_user_id');
+            $table->foreignId('adverter_user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('offerer_user_id')->constrained('users')->cascadeOnDelete();
             $table->string('status');
             $table->timestamps();
         });

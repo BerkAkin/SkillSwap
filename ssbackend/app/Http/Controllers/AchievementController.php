@@ -6,13 +6,13 @@ use Illuminate\Http\JsonResponse;
 use App\Http\Requests\AchievementRequests\StoreRequest;
 use App\Http\Requests\AchievementRequests\UpdateRequest;
 use App\Http\Resources\AchievementResources\GetResource;
-use App\Contracts\AchievementServiceInterface;
+use App\Contracts\IAchievementService;
 use App\DTOs\AchievementDTOs\StoreDTO;
 use App\DTOs\AchievementDTOs\UpdateDTO;
 
 class AchievementController extends Controller
 {
-    public function __construct(private readonly AchievementServiceInterface $service){}
+    public function __construct(private readonly IAchievementService $service){}
 
      public function index():JsonResponse{
         $result = $this->service->GetAll();

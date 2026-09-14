@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\ISkillService;
 use Illuminate\Http\JsonResponse;
-use App\Contracts\SkillServiceInterface;
 use App\Http\Requests\SkillRequests\StoreRequest;
 use App\Http\Resources\SkillResources\GetResource;
 use App\DTOs\SkillDTOs\StoreDTO;
@@ -12,7 +12,7 @@ use App\Http\Requests\SkillRequests\UpdateRequest;
 
 class SkillController extends Controller
 {
-    public function __construct(private readonly SkillServiceInterface $service){}
+    public function __construct(private readonly ISkillService $service){}
 
     public function index():JsonResponse{
        $result = $this->service->GetAll();

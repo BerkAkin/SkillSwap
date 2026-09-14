@@ -2,12 +2,12 @@
 
 namespace App\Services;
 
-use App\Contracts\AchievementServiceInterface;
+use App\Contracts\IAchievementService;
 use App\DTOs\AchievementDTOs\StoreDTO;
 use App\DTOs\AchievementDTOs\UpdateDTO;
 use App\Models\Achievement;
 
-class AchievementService extends BaseService implements AchievementServiceInterface
+class AchievementService extends BaseService implements IAchievementService
 {
     protected string $model = Achievement::class;
 

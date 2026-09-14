@@ -2,12 +2,12 @@
 
 namespace App\Services;
 
-use App\Contracts\SocialServiceInterface;
+use App\Contracts\ISocialService;
 use App\Models\Social;
 use App\DTOs\SocialDTOs\StoreDTO;
 use App\DTOs\SocialDTOs\UpdateDTO;
 
-class SocialService extends BaseService implements SocialServiceInterface
+class SocialService extends BaseService implements ISocialService
 {
     protected string $model = Social::class;
 

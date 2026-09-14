@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\ISettingService;
 use Illuminate\Http\JsonResponse;
 use App\Http\Requests\SettingRequests\StoreRequest;
 use App\Http\Requests\SettingRequests\UpdateRequest;
 use App\Http\Resources\SettingResources\GetResource;
-use App\Contracts\SettingServiceInterface;
 use App\DTOs\SettingDTOs\StoreDTO;
 use App\DTOs\SettingDTOs\UpdateDTO;
 
 class SettingController extends Controller
 {
-    public function __construct(private readonly SettingServiceInterface $service){}
+    public function __construct(private readonly ISettingService $service){}
 
     public function index():JsonResponse{
         $result = $this->service->GetAll();

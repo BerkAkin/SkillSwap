@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enums\app\enums;
+namespace App\Enums;
 
 enum StatusTypes:string
 {

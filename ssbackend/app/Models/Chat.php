@@ -2,15 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Enums\StatusTypes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
 class Chat extends Model
 {
-    use HasFactory,Notifiable;
-    protected $fillable = [];
+    use Notifiable;
+    protected $fillable = ['offer_id','advert_id','adverter_user_id','offerer_user_id','status'];
     protected $hidden = [];
+    protected $casts = [
+    'status' => StatusTypes::class,
+    ];
     
     public function adverts(){
         return $this->belongsTo(Advert::class);

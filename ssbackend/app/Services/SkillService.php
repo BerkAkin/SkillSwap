@@ -2,12 +2,12 @@
 
 namespace App\Services;
 
-use App\Contracts\SkillServiceInterface;
+use App\Contracts\ISkillService;
 use App\Models\Skill;
 use App\DTOs\SkillDTOs\StoreDTO;
 use App\DTOs\SkillDTOs\UpdateDTO;
 
-class SkillService extends BaseService implements SkillServiceInterface 
+class SkillService extends BaseService implements ISkillService
 {
     protected string $model = Skill::class;
 

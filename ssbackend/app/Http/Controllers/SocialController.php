@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\SocialServiceInterface;
+use App\Contracts\ISocialService;
 use App\Http\Requests\SocialRequests\StoreRequest;
 use App\Http\Requests\SocialRequests\UpdateRequest;
 use App\Http\Resources\SocialResources\GetResource;
@@ -12,7 +12,7 @@ use Illuminate\Http\JsonResponse;
 
 class SocialController extends Controller
 {
-    public function __construct(private readonly SocialServiceInterface $service){}
+    public function __construct(private readonly ISocialService $service){}
 
     public function index():JsonResponse{
         $result = $this->service->GetAll();

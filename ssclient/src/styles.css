@@ -1,1 +1,26 @@
 @import 'tailwindcss';
+
+@font-face {
+    font-family: 'ssChanga';
+    src:url('assets/fonts/changa.ttf') format('truetype');
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ssRubik';
+    src:url('assets/fonts/rubik.ttf') format('truetype');
+}
+
+body{
+    background-color: rgb(249, 249, 249);
+}
+
+
+.shadow-custom{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 20px;
+}
+.font-changa{
+    font-family: 'ssChanga', sans-serif;
+}
+.font-rubik{
+    font-family: 'ssRubik', sans-serif;
+}

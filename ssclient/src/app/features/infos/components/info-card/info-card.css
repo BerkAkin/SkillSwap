@@ -1,0 +1,8 @@
+.info-card:hover{
+    transition: all ease 0.2s;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+.title-axis{
+    transform: rotate(-10deg);
+}

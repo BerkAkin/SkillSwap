@@ -38,8 +38,14 @@ class User extends Authenticatable
         return $this->belongsToMany(Skill::class);
     }
 
-    public function wishlist(){
-        return $this->belongsToMany(Wishlist::class);
+    public function wishlist()
+    {
+        return $this->belongsToMany(
+            Skill::class,
+            'wishlists',
+            'user_id',
+            'skill_id'
+        );
     }
 
     public function credits(){

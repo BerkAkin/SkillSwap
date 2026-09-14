@@ -9,10 +9,14 @@ use Illuminate\Notifications\Notifiable;
 class Message extends Model
 {
     use HasFactory,Notifiable;
-    protected $fillable = [];
+    
+    protected $fillable = ['user_id','chat_id','message'];
     protected $hidden = [];
 
-    public function chats(){
+    public function chat(){
         return $this->belongsTo(Chat::class);
+    }
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

@@ -1,0 +1,16 @@
+.link{
+    font-family: 'ssRubik','sans-serif';
+    font-weight: 400;
+    color: rgb(150, 150, 150);
+}
+.link:hover{
+    color: #0891b2;
+    transform: scale(1.1);
+    transition: ease-in-out 0.2s;
+}
+
+.active-link{
+    font-size: larger;
+    color: #f97316 ;
+    transition: ease-in-out 0.1s;
+}

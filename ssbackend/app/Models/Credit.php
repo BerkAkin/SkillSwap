@@ -10,7 +10,7 @@ class Credit extends Model
 {
     use HasFactory, Notifiable;
     protected $hidden = [];
-    protected $fillable = [];
+    protected $fillable = ['credit_points','user_id'];
 
     public function users(){
        return $this->belongsTo(User::class);
