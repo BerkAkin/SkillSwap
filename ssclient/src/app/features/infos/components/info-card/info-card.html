@@ -1,15 +1,14 @@
- <div class="bg-white border border-slate-200 rounded-xl shadow-sm min-h-[200px] transition-all info-card">
+ <div class="bg-white border border-slate-200 rounded-md shadow-md min-h-[200px] transition-all info-card">
     <div class="h-15">
         <div class="flex justify-start items-center py-4 px-2">
             <p [ngClass]="data().color==='orange' ? 'bg-orange-500 border-orange-600':'bg-sky-500 border-sky-600'" 
-               class="text-white font-rubik border rounded-lg px-2 font-semibold title-axis text-lg">{{data().icon + data().title}}</p>
-
+               class="text-white font-rubik border rounded-md px-2 font-medium title-axis">{{data().icon + data().title}}</p>
         </div>
     </div>
     <div class="h-30">
         <div class="flex relative justify-center h-full w-full items-center">
-            <p class="absolute z-0 text-gray-200/70 text-9xl">{{data().icon}}</p>
-            <p class="text-lg/8 z-10 text-slate-600 font-rubik p-5 text-center">{{data().description}}</p>
+            <p class="absolute z-0 text-slate-200/60 text-9xl">{{data().icon}}</p>
+            <p class="text-lg/8 z-10 text-slate-500 font-rubik p-5 text-center">{{data().description}}</p>
         </div>
     </div>
  </div>

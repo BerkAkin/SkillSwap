@@ -1,1 +1,14 @@
-<p>comment-card works!</p>
+ <div class="bg-white border border-slate-200 rounded-md shadow-md max-h-[200px] transition-all info-card">
+    <div class="h-30">
+        <div class="relative flex justify-center items-center py-4 px-2 ">
+            <p class="font-rubik px-2 text-slate-500">{{data().comment}}
+            <p class="absolute z-0 text-orange-600/10 text-9xl">{{data().point === 5 ?"★":""}}</p>
+        </div>
+    </div>
+    <div class="h-10 border-t border-slate-200">
+        <div class="flex relative justify-between h-full w-full items-center font-rubik">
+            <p class="text-slate-600 font-medium p-5 text-center">{{data().user}}</p>
+            <p class="text-orange-500 font-medium p-5 text-center">{{data().point}} ★</p>
+        </div>
+    </div>
+ </div>

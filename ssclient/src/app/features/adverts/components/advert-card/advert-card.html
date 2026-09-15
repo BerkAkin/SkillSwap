@@ -1,17 +1,18 @@
-<div class="border border-gray-200 h-[200px] max-h-[200px] rounded-lg shadow-sm bg-white card">
+<div class="border border-gray-200 h-[200px] max-h-[200px] rounded-md shadow-sm bg-white card">
     <div class="size-full container font-rubik">
-        <div class="h-[20%] flex items-center justify-center bg-sky-500 rounded-t-lg">
-            <p class="text-white font-normal">
+        <div class="h-[20%] flex items-center justify-between px-3">
+            <p class="text-slate-600 font-medium">
                 {{data()?.skill?.title}}
             </p>
+            <button class="cursor-pointer rounded-md px-2 border border-emerald-600 font-medium text-emerald-600 hover:bg-emerald-600 hover:text-white transition" onclick="alert(21321)">Make Offer !</button>
         </div>
-        <div class="h-[65%] flex items-center p-3 justify-center  border-y border-slate-200">
-            <p class="text-sm text-slate-700 text-center">
+        <div class="h-[65%] flex items-center p-3 justify-center border-y border-slate-200">
+            <p class="text-sm text-slate-600 text-center">
                 {{data()?.skill?.description}}
             </p>
         </div>
         <div class="h-[15%] flex items-center px-3 py-1 justify-between">
-            <p class="text-orange-500">
+            <p class="text-orange-400">
                 {{getStars()}} ★
             </p>
             <p class="text-sky-500 text-sm">

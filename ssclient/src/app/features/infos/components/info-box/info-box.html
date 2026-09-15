@@ -1,13 +1,16 @@
-<div class="p-8 min-h-[700px] flex items-center">
+<div class="p-8 min-h-[400px] flex items-center bg-white my-12 shadow-sm border border-slate-200">
   <div class="container mx-auto grid grid-cols-12 gap-6">
     <div [ngClass]="lefty() ? 'order-1' : 'order-2'" class="p-8 col-span-6 flex flex-col items-center justify-center">
       <img [ngSrc]="imagePath()!" width="100" height="100" class="h-full w-auto" alt="Content Image"/>
     </div>
     <div [ngClass]="lefty() ? 'order-2' : 'order-1'" class="col-span-6 flex flex-col justify-center" >
-      <h2 class="text-5xl text-orange-500 font-changa font-semibold">
-        {{ contentHeader() }}
+      <h2 class="text-6xl font-medium flex text-slate-600 font-rubik ">
+        <span class="me-2">
+          {{ contentHeader() }}
+        </span>
+        <app-brand/> ?
       </h2>
-      <p class="text-xl/14 my-4 text-slate-600 font-rubik max-h-[300px] overflow-hidden">
+      <p class="text-lg/14 my-4 text-slate-500 font-rubik max-h-[300px] overflow-hidden">
         {{ content() }}
       </p>
     </div>

@@ -14,10 +14,6 @@ body{
     background-color: rgb(249, 249, 249);
 }
 
-
-.shadow-custom{
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 20px;
-}
 .font-changa{
     font-family: 'ssChanga', sans-serif;
 }

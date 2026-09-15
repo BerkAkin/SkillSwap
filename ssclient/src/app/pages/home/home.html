@@ -12,28 +12,34 @@
         </div> 
     </div>
 </div>
-<div class="bg-white my-12 shadow-xs border border-slate-200">
-    <app-info-box content="
+
+<app-info-box content="
      SkillSwap is a skill-sharing platform where people can exchange their knowledge and abilities with others. 
      Instead of paying for a service, users can offer one of their own skills in return. 
      This allows people to learn new skills while sharing what they already know." 
-    contentHeader="What is SkillSwap ?" imagePath="/assets/images/img.png"/>
-</div>
+    contentHeader="What is" imagePath="/assets/images/img.png"
+/>
 
-<div class="relative min-h-[200px]">
-    <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 border-dotted border-t-3 border-b-3 border-t-orange-600 border-b-sky-600 z-0 min-h-[8px]"></div>
-    <div class="container mx-auto grid grid-cols-4 gap-6 relative z-10">
-        @for (card of cards; track $index) {
-            <app-info-card [data]="card"/>
-        }
-    </div>
-</div>
 
-<div  class="bg-white my-12 shadow-xs border border-slate-200">
-    <app-info-box [lefty]="true" content="
+<app-info-section header="& Connect">
+    @for (card of cards; track $index) {
+        <app-info-card [data]="card"/>
+    }
+</app-info-section>
+
+
+<app-info-box [lefty]="true" content="
     Users can browse different adverts and find skills they are interested in. 
     They can send an offer by exchanging their own skills. If both sides agree, 
     they can arrange a skill swap and use the chat feature to discuss the details. 
     This makes it easy for users to connect, share their skills, and learn something new." 
-    contentHeader="How Does It Work ?" imagePath="/assets/images/ss.png"/>
-</div>    
+    contentHeader="How to" imagePath="/assets/images/ss.png"
+/>  
+
+<app-info-section header="Experiences">
+    @for (comment of comments; track $index) {
+        <app-comment-card [data]="comment"/>
+    }
+</app-info-section>
+
+

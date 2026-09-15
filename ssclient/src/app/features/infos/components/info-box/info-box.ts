@@ -1,9 +1,10 @@
 import { NgOptimizedImage, NgClass } from '@angular/common';
 import { Component, input } from '@angular/core';
+import { Brand } from '../../../../layout/brand/brand';
 
 @Component({
   selector: 'app-info-box',
-  imports: [NgOptimizedImage, NgClass],
+  imports: [NgOptimizedImage, NgClass, Brand],
   templateUrl: './info-box.html',
   styleUrl: './info-box.css',
 })
