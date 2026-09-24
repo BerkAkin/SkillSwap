@@ -10,15 +10,18 @@ abstract class BaseService implements IBaseService
 {
     protected string $model;
 
-    public function GetAll(): Collection{
+    public function GetAll(): Collection
+    {
         return $this->model::all();
     }
-    
-    public function Find(int $id) : ?Model{
+
+    public function Find(int $id): ?Model
+    {
         return $this->model::findOrFail($id);
     }
 
-    public function Destroy(int $id){
+    public function Destroy(int $id)
+    {
         return $this->Find($id)->delete();
     }
 }
