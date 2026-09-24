@@ -9,4 +9,5 @@ use App\Models\Advert;
 interface IAdvertService extends IBaseService
 {
     public function Create(StoreDTO $DTO): ?Advert;
+    public function myAdverts():Collection;
 }
