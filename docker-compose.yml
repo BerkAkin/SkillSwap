@@ -1,5 +1,5 @@
 services:
- 
+
   laravel:
     build:
       context: ./ssbackend
@@ -22,12 +22,6 @@ services:
       - DB_PASSWORD=secret
       - REDIS_HOST=redis
       - REDIS_PORT=6379
-      - FILESYSTEM_DISK=s3
-      - AWS_ACCESS_KEY_ID=minioadmin
-      - AWS_SECRET_ACCESS_KEY=minioadmin
-      - AWS_BUCKET=my-bucket
-      - AWS_ENDPOINT=http://minio:9000
-      - AWS_USE_PATH_STYLE_ENDPOINT=true
     depends_on:
       - postgres
       - redis
@@ -72,12 +66,11 @@ services:
     networks:
       - ss_network
 
-
 volumes:
   ss_pgdata:
   ss_node_modules:
   ss_vendor:
-  
+
 networks:
   ss_network:
     driver: bridge
