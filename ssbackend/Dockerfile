@@ -9,4 +9,6 @@ RUN install-php-extensions pdo_mysql pdo_pgsql pgsql mbstring exif pcntl bcmath 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 COPY composer.json composer.lock ./
-RUN composer install 
+COPY . .
+
+RUN composer install
