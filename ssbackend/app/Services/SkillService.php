@@ -16,12 +16,13 @@ class SkillService implements ISkillService
 
     public function GetAll()
     {
-        $page = request()->get('page', 1);
+        $search = strtolower(request()->get('search', ''));
+        $sort = request()->get('sort', 'name');
 
-        $cacheKey = "skills:page:$page";
+        $cacheKey = $this->createCacheKey();
 
-        $skills = Cache::tags(['skills'])->remember($cacheKey, 300, function () {
-            return $this->model::paginate(1)->toArray();
+        $skills = Cache::tags(['skills'])->remember($cacheKey, 300, function () use ($search, $sort) {
+            return $this->model::where('name', 'ilike', "%$search%")->orderBy($sort)->paginate(1)->toArray();
         });
 
         $skills['data'] = Skill::hydrate($skills['data']);
@@ -73,11 +74,50 @@ class SkillService implements ISkillService
 
     public function Find(int $id): ?Skill
     {
-        $skill = Cache::remember("skills:$id", 300, function () use ($id) {
-            return $this->model::findOrFail($id)->toArray();
-        });
+        $cacheKey = "skills:$id";
+        $cached = Cache::get($cacheKey);
+        if ($cached) {
+            return Skill::hydrate([$cached])->first();
+        }
 
-        return Skill::hydrate([$skill])->first();
+        $lock = Cache::lock("skills:lock:$id", 10);
+
+        try {
+            $lock->block(5);
+
+            $cached = Cache::get($cacheKey);
+
+            if (!$cached) {
+                $cached = $this->model::findOrFail($id)->toArray();
+                Cache::put($cacheKey, $cached, 300);
+            }
+
+            return Skill::hydrate([$cached])->first();
+
+        } finally {
+            $lock->release();
+        }
+
+    }
+
+    private function createCacheKey(): string
+    {
+        $page = request()->get('page', 1);
+        $search = strtolower(request()->get('search', ''));
+        $sort = request()->get('sort', 'name');
+
+        $params = [
+            'page' => $page,
+            'search' => $search,
+            'sort' => $sort,
+        ];
+
+        if ($search === '') {
+            unset($params['search']);
+        }
+
+        return 'skills:' . http_build_query($params);
+
     }
 
 }
