@@ -16,13 +16,11 @@ class SkillService implements ISkillService
 
     public function GetAll()
     {
-        $search = strtolower(request()->get('search', ''));
-        $sort = request()->get('sort', 'name');
+        $params = $this->getListParams();
+        $cacheKey = $this->createCacheKey($params);
 
-        $cacheKey = $this->createCacheKey();
-
-        $skills = Cache::tags(['skills'])->remember($cacheKey, 300, function () use ($search, $sort) {
-            return $this->model::where('name', 'ilike', "%$search%")->orderBy($sort)->paginate(1)->toArray();
+        $skills = Cache::tags(['skills'])->remember($cacheKey, 300, function () use ($params) {
+            return $this->model::where('name', 'ilike', "%{$params['search']}%")->orderBy($params['sort'])->paginate(1)->toArray();
         });
 
         $skills['data'] = Skill::hydrate($skills['data']);
@@ -100,24 +98,28 @@ class SkillService implements ISkillService
 
     }
 
-    private function createCacheKey(): string
+    private function createCacheKey(array $params): string
     {
-        $page = request()->get('page', 1);
-        $search = strtolower(request()->get('search', ''));
-        $sort = request()->get('sort', 'name');
+        $params = $this->getListParams();
 
-        $params = [
-            'page' => $page,
-            'search' => $search,
-            'sort' => $sort,
-        ];
-
-        if ($search === '') {
+        if ($params['search'] === '') {
             unset($params['search']);
         }
 
         return 'skills:' . http_build_query($params);
+    }
 
+    private function getListParams(): array
+    {
+        $search = strtolower(request()->get('search', ''));
+        $page = intval(request()->get('page', 1));
+        $sort = request()->get('sort', 'name');
+
+        return [
+            'search' => $search,
+            'page' => $page,
+            'sort' => $sort,
+        ];
     }
 
 }
