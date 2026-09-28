@@ -8,11 +8,12 @@ use App\DTOs\MeetingDTOs\UpdateDTO;
 use App\Models\Meeting;
 use Illuminate\Database\Eloquent\Collection;
 
-interface IMeetingService 
+interface IMeetingService
 {
     public function Create(StoreDTO $DTO): ?Meeting;
     public function Update(UpdateDTO $DTO);
     public function GetAll(): Collection;
-    public function GetConflictedMeetings():Collection;
+    public function GetConflictedMeetings(): Collection;
     public function DecideResult(DecideResultDTO $DTO);
+    public function meetingTypes(): array;
 }
