@@ -1,17 +1,22 @@
-<nav class="font-rubik border border-slate-200 container mx-auto rounded-b-xl h-[100px] bg-white shadow-md flex items-center">
+<nav
+    class="font-rubik border border-slate-200 container mx-auto rounded-b-xl h-[100px] bg-white shadow-md flex items-center">
     <ul class="grid grid-cols-12 w-full items-center">
         <li class="col-span-2 flex justify-center items-center overflow-hidden">
-            <a routerLink="/home" >
-               <app-brand/>
+            <a routerLink="/home">
+                <app-brand />
             </a>
         </li>
         <li class="col-span-8 flex justify-center pt-2">
             <span class="mx-6 link text-lg"><a routerLink="/adverts" routerLinkActive="active-link">Adverts</a></span>
             <span class="mx-6 link text-lg"><a routerLink="/whoami" routerLinkActive="active-link">About Me</a></span>
         </li>
-        <li class="col-span-2 flex justify-center items-end me-2">
-            <a class="rounded-md auth-link px-2 mx-1" routerLink="/login" routerLinkActive="active-auth-link">Login</a>
-            <a class="rounded-md auth-link px-2 mx-1" routerLink="/register" routerLinkActive="active-auth-link">Register</a>
+        <li class="col-span-2 flex justify-center items-end me-2 relative">
+            <button class="rounded-md auth-link px-2 mx-1" (click)="toggleLogin()">Login</button>
+            <a class="rounded-md auth-link px-2 mx-1" routerLink="/register"
+                routerLinkActive="active-auth-link">Register</a>
+            @if (loginState) {
+            <app-login />
+            }
         </li>
     </ul>
 </nav>
