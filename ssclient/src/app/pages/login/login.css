@@ -1,0 +1,18 @@
+@reference "tailwindcss";
+
+.miniInputs {
+    @apply rounded-md px-2 text-base w-full text-slate-600;
+    border: 1px solid #f97316;
+    height: 30px;
+
+}
+
+.miniInputs:focus {
+    border: 2px solid #f97316;
+    outline: none;
+
+}
+
+.subButton {
+    @apply bg-orange-500 text-white hover:bg-white hover:border-orange-500 hover:border hover:text-orange-500 font-bold p-1 text-lg transition rounded-md cursor-pointer w-full h-[50px];
+}
