@@ -24,6 +24,8 @@ use App\Services\SkillService;
 use App\Services\SocialService;
 use App\Services\UserInterestsService;
 use App\Services\UserService;
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -33,14 +35,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(IAuthService::class,AuthService::class);
-        $this->app->bind(ISkillService::class,SkillService::class);
-        $this->app->bind(ISocialService::class,SocialService::class);
+        $this->app->bind(IAuthService::class, AuthService::class);
+        $this->app->bind(ISkillService::class, SkillService::class);
+        $this->app->bind(ISocialService::class, SocialService::class);
         $this->app->bind(ISettingService::class, SettingService::class);
-        $this->app->bind(IAchievementService::class,AchievementService::class);
-        $this->app->bind(IAdvertService::class,AdvertService::class);
-        $this->app->bind(IOfferService::class,OfferService::class);
-        $this->app->bind(IUserService::class,UserService::class);
+        $this->app->bind(IAchievementService::class, AchievementService::class);
+        $this->app->bind(IAdvertService::class, AdvertService::class);
+        $this->app->bind(IOfferService::class, OfferService::class);
+        $this->app->bind(IUserService::class, UserService::class);
         $this->app->bind(IUserInterestService::class, UserInterestsService::class);
         $this->app->bind(IChatService::class, ChatService::class);
         $this->app->bind(IMeetingService::class, MeetingService::class);
@@ -51,6 +53,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        RateLimiter::for('general', function ($request) {
+            return Limit::perMinute(30)
+                ->by($request->user()?->id ?: $request->ip());
+        });
+
+        RateLimiter::for('admin', function ($request) {
+            return Limit::perMinute(60)
+                ->by($request->user()?->id ?: $request->ip());
+        });
     }
 }
