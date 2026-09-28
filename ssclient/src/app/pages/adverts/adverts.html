@@ -2,13 +2,15 @@
     <div class="grid grid-cols-12">
         <div class="col-span-2"></div>
         <div class="col-span-10">
-            <div class="grid grid-cols-12">
-                <div class="col-span-3">
-                    <app-advert-card [data]="temporaryAdvert()"/>
+            <div class="grid grid-cols-12 gap-4">
+                @for (advert of adverts()?.data; track advert.id) {
+                <div class="col-span-2">
+                    <app-advert-card [data]="advert" />
                 </div>
+                }
             </div>
             <div class="my-6">
-                <app-advert-table/>
+                <app-advert-table [data]="adverts()" />
             </div>
         </div>
     </div>
