@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { IAdvertResponse } from '../../models/IAdvertResponse';
 
 @Component({
   selector: 'app-advert-table',
@@ -6,4 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './advert-table.html',
   styleUrl: './advert-table.css',
 })
-export class AdvertTable {}
+export class AdvertTable {
+  data = input<IAdvertResponse | null>(null);
+}
