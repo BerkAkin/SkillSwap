@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { AdvertCard } from '../../features/adverts/components/advert-card/advert-card';
-import { IAdvertCard } from '../../features/adverts/models/IAdvertCard';
 import { AdvertTable } from '../../features/adverts/components/advert-table/advert-table';
+import { AdvertsService } from '../../features/adverts/services/adverts-service';
+import { IAdvertResponse } from '../../features/adverts/models/IAdvertResponse';
 
 @Component({
   selector: 'app-adverts',
@@ -9,15 +10,18 @@ import { AdvertTable } from '../../features/adverts/components/advert-table/adve
   templateUrl: './adverts.html',
   styleUrl: './adverts.css',
 })
-export class Adverts {
-  temporaryAdvert = signal<IAdvertCard>({
-    id: '1',
-    skill: {
-      title: 'C# Dersleri',
-      description:
-        'C# üzerine yoğun ve derinlemesine bilgi sahibiyim. 4 saatlik eğitim verebilirim',
-    },
-    username: 'Berk A',
-    points: 1000,
-  });
+export class Adverts implements OnInit {
+  adverts = signal<IAdvertResponse | null>(null);
+  constructor(private advertsService: AdvertsService) { }
+
+  ngOnInit(): void {
+    this.advertsService.getAdverts().subscribe({
+      next: (response) => {
+        this.adverts.set(response);
+      },
+      error: () => {
+        console.log("Error fetching adverts");
+      }
+    });
+  }
 }
