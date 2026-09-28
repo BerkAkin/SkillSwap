@@ -1,9 +1,14 @@
-export interface IAdvertCard {
+export interface IAdvertModel {
   id: string;
-  username: string;
+  status: string;
+  created_at: string;
+  user: {
+    id: number;
+    name: string;
+  },
   skill: {
-    title: string;
+    id: number;
+    name: string;
     description: string;
   };
-  points: number;
 }
