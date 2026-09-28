@@ -19,7 +19,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/skills', [SkillController::class, 'index']);
 Route::get('/adverts', [AdvertController::class, 'index']);
 Route::get('/adverts/{id}', [AdvertController::class, 'show']);
-
+Route::get('/meetings/types', [MeetingController::class, 'meetingTypes']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
 
