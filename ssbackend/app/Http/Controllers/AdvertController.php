@@ -10,49 +10,62 @@ use Illuminate\Http\JsonResponse;
 
 class AdvertController extends Controller
 {
-    public function __construct(private readonly IAdvertService $service){}
+    public function __construct(private readonly IAdvertService $service)
+    {
+    }
 
-    public function index():JsonResponse{
+    public function index(): JsonResponse
+    {
         $result = $this->service->GetAll();
         return response()->json([
-            'message'=>'Adverts fetched successfully',
-            'data'=>GetResource::collection($result),
-        ],200);
+            'message' => 'Adverts fetched successfully',
+            'data' => $result,
+        ], 200);
     }
 
 
-    public function show(int $id):JsonResponse{
+    public function show(int $id): JsonResponse
+    {
         $result = $this->service->Find($id);
-        return response()->json([
-            'message'=>'Advert fetched successfully',
-            'data'=>new GetResource($result),
-        ],200);
+        if ($result) {
+            return response()->json([
+                'message' => 'Advert pulled successfully',
+                'data' => $result,
+            ], 200);
+        } else {
+            return response()->json([
+                'message' => 'Advert not found',
+            ], 404);
+        }
     }
 
 
-    public function store(StoreRequest $request):JsonResponse{
+    public function store(StoreRequest $request): JsonResponse
+    {
         $dto = StoreDTO::fromArray($request->validated());
         $result = $this->service->Create($dto);
         return response()->json([
-            'message'=>'Advert saved successfully',
-            'data'=>new GetResource($result),
-        ],201);
-    }
- 
-    public function destroy(int $id):JsonResponse{
-        $result = $this->service->Destroy($id);
-        return response()->json([
-            'message'=>'Advert deleted successfully',
-            'data'=>$result,
-        ],200);
+            'message' => 'Advert saved successfully',
+            'data' => new GetResource($result),
+        ], 201);
     }
 
-    public function myAdverts():JsonResponse{
-        $result= $this->service->myAdverts();
+    public function destroy(int $id): JsonResponse
+    {
+        $result = $this->service->Destroy($id);
         return response()->json([
-            'message'=>'Your adverts fetched successfully',
-            'data'=> GetResource::collection($result),
+            'message' => 'Advert deleted successfully',
+            'data' => $result,
+        ], 200);
+    }
+
+    public function myAdverts(): JsonResponse
+    {
+        $result = $this->service->myAdverts();
+        return response()->json([
+            'message' => 'Your adverts fetched successfully',
+            'data' => GetResource::collection($result),
         ]);
     }
-    
+
 }
