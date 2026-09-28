@@ -13,15 +13,17 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserInterestController;
 use Illuminate\Support\Facades\Route;
 
+Route::middleware('throttle:general')->group(function () {
+    Route::get('/skills', [SkillController::class, 'index']);
+    Route::get('/adverts', [AdvertController::class, 'index']);
+    Route::get('/adverts/{id}', [AdvertController::class, 'show']);
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login']);
+});
 
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
-Route::get('/skills', [SkillController::class, 'index']);
-Route::get('/adverts', [AdvertController::class, 'index']);
-Route::get('/adverts/{id}', [AdvertController::class, 'show']);
 Route::get('/meetings/types', [MeetingController::class, 'meetingTypes']);
 
-Route::middleware(['auth:sanctum'])->group(function () {
+Route::middleware(['auth:sanctum', 'throttle:general'])->group(function () {
 
     Route::post('/logout', [AuthController::class, 'logout']);
 
@@ -63,7 +65,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 
 //ADMIN CRUD OPS
-Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
+Route::middleware(['auth:sanctum', 'role:admin', 'throttle:admin'])->group(function () {
     Route::get('/skills/{id}', [SkillController::class, 'show']);
     Route::post('/skills', [SkillController::class, 'store']);
     Route::put('/skills/{id}', [SkillController::class, 'update']);
