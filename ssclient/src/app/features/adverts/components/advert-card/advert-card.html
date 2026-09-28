@@ -2,22 +2,21 @@
     <div class="size-full container font-rubik">
         <div class="h-[20%] flex items-center justify-between px-3">
             <p class="text-slate-600 font-medium">
-                {{data()?.skill?.title}}
+                {{data()?.skill?.name}}
             </p>
-            <button class="cursor-pointer rounded-md px-2 border border-emerald-600 font-medium text-emerald-600 hover:bg-emerald-600 hover:text-white transition" onclick="alert(21321)">Make Offer !</button>
         </div>
         <div class="h-[65%] flex items-center p-3 justify-center border-y border-slate-200">
             <p class="text-sm text-slate-600 text-center">
                 {{data()?.skill?.description}}
             </p>
         </div>
-        <div class="h-[15%] flex items-center px-3 py-1 justify-between">
-            <p class="text-orange-400">
-                {{getStars()}} ★
-            </p>
+        <div class="h-[15%] flex items-center ps-2 pe-1 py-1 justify-between">
             <p class="text-sky-500 text-sm">
-                {{data()?.username}} 
+                {{data()?.user?.name}}
             </p>
+            <button
+                class="cursor-pointer rounded-md px-2 border border-emerald-600 font-medium text-emerald-600 hover:bg-emerald-600 hover:text-white transition"
+                onclick="alert(2)">Offer !</button>
         </div>
     </div>
     <!-- {{data()?.id}} -->
