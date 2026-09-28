@@ -58,7 +58,7 @@ class AdvertService implements IAdvertService
                     ->with([
                         'user:id,firstname',
                         'skill:id,name,description',
-                        'meeting:id,adverter_approval,offerer_approval,status'
+                        'meeting:id,adverter_approval,offerer_approval,status',
                     ])
                     ->Find($id);
 
