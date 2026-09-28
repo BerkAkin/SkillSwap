@@ -12,48 +12,61 @@ use App\Http\Requests\SkillRequests\UpdateRequest;
 
 class SkillController extends Controller
 {
-    public function __construct(private readonly ISkillService $service){}
-
-    public function index():JsonResponse{
-       $result = $this->service->GetAll();
-       return response()->json([
-        'message'=>'Skills Pulled Successfully',
-        'data' => GetResource::collection($result),
-       ],200);
+    public function __construct(private readonly ISkillService $service)
+    {
     }
 
-    public function store(StoreRequest $request):JsonResponse{
+    public function index(): JsonResponse
+    {
+        $result = $this->service->GetAll();
+        return response()->json([
+            'message' => 'Skills Pulled Successfully',
+            'data' => $result,
+        ], 200);
+    }
+
+    public function store(StoreRequest $request): JsonResponse
+    {
         $dto = StoreDTO::fromValidation($request->validated());
         $this->service->Create($dto);
         return response()->json([
-            'message'=> 'Skill Stored Successfully',
-        ],201);
+            'message' => 'Skill Stored Successfully',
+        ], 201);
     }
 
 
-    public function show(int $id):JsonResponse{
+    public function show(int $id): JsonResponse
+    {
         $result = $this->service->Find($id);
-        return response()->json([
-            'message'=>'Skill pulled successfully',
-            'data' => new GetResource($result),
-        ],200);
+        if ($result) {
+            return response()->json([
+                'message' => 'Skill pulled successfully',
+                'data' => $result,
+            ], 200);
+        } else {
+            return response()->json([
+                'message' => 'Skill not found',
+            ], 404);
+        }
     }
 
 
-    public function update(int $id, UpdateRequest $request):JsonResponse{
-        $dto = UpdateDTO::fromArray($request->validated(),$id);
+    public function update(int $id, UpdateRequest $request): JsonResponse
+    {
+        $dto = UpdateDTO::fromArray($request->validated(), $id);
         $result = $this->service->Update($dto);
         return response()->json([
-            'message'=>'Skill Updated Successfully',
-            'data'=> $result,
-        ],200);
+            'message' => 'Skill Updated Successfully',
+            'data' => $result,
+        ], 200);
     }
 
 
-    public function destroy(int $id):JsonResponse{
+    public function destroy(int $id): JsonResponse
+    {
         $this->service->Destroy($id);
         return response()->json([
-            'message'=>'Skill deleted successfully',
-        ],201);
+            'message' => 'Skill deleted successfully',
+        ], 201);
     }
 }
