@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { IAdvertCard } from '../../models/IAdvertCard';
+import { IAdvertModel } from '../../models/IAdvertCard';
 
 @Component({
   selector: 'app-advert-card',
@@ -8,13 +8,6 @@ import { IAdvertCard } from '../../models/IAdvertCard';
   styleUrl: './advert-card.css',
 })
 export class AdvertCard {
-  data = input<IAdvertCard>();
-  maxStars = 500;
+  data = input<IAdvertModel>();
 
-  getStars = (): number => {
-    if (this.data()!.points > 500) {
-      return 5;
-    }
-    return (this.data()!.points * 5) / this.maxStars;
-  };
 }
