@@ -24,10 +24,6 @@ export const routes: Routes = [
     component: Whoami,
   },
   {
-    path: 'login',
-    component: Login,
-  },
-  {
     path: 'register',
     component: Register,
   },
