@@ -9,23 +9,27 @@ use App\DTOs\MeetingDTOs\UpdateDTO;
 use App\Enums\StatusTypes;
 use App\Models\Advert;
 use App\Models\Meeting;
+use App\Models\MeetingType;
 use App\Models\Offer;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class MeetingService implements IMeetingService
 {
     protected string $model = Meeting::class;
 
-    public function GetAll(): Collection{
+    public function GetAll(): Collection
+    {
         $loggedInUser = Auth::id();
-        return Meeting::where(function($query) use ($loggedInUser){
-            $query->where('offerer_id',$loggedInUser)
-            ->orWhere('adverter_id',$loggedInUser);
+        return Meeting::where(function ($query) use ($loggedInUser) {
+            $query->where('offerer_id', $loggedInUser)
+                ->orWhere('adverter_id', $loggedInUser);
         })->get();
     }
-    
-    public function Create(StoreDTO $DTO): ?Meeting{
+
+    public function Create(StoreDTO $DTO): ?Meeting
+    {
         $loggedInUser = Auth::id();
         $advert = Advert::findOrFail($DTO->advertId);
         $offer = Offer::findOrFail($DTO->offerId);
@@ -37,31 +41,32 @@ class MeetingService implements IMeetingService
             return null;
         }
 
-        if ((int) $adverterId !== (int) $loggedInUser &&(int) $offererId !== (int) $loggedInUser) {
+        if ((int) $adverterId !== (int) $loggedInUser && (int) $offererId !== (int) $loggedInUser) {
             throw new \Exception("You are not the owner of this advert or offer");
         }
 
         return $this->model::create([
-            'advert_id'=>$DTO->advertId,
-            'offer_id'=>$DTO->offerId,
+            'advert_id' => $DTO->advertId,
+            'offer_id' => $DTO->offerId,
 
-            'adverter_id'=> $adverterId,
-            'offerer_id'=> $offererId,
+            'adverter_id' => $adverterId,
+            'offerer_id' => $offererId,
 
-            'meeting_type_id'=>$DTO->meetingTypeId,
+            'meeting_type_id' => $DTO->meetingTypeId,
             'status' => $DTO->type,
-            'date'=>$DTO->date,
+            'date' => $DTO->date,
         ]);
     }
 
-    public function Update(UpdateDTO $DTO){
+    public function Update(UpdateDTO $DTO)
+    {
         $loggedInUser = Auth::id();
 
         $meeting = $this->model::findOrFail($DTO->meetingId);
 
         if ((int) $meeting->offerer_id === (int) $loggedInUser) {
             $meeting->update([
-                'offerer_approval' =>  $DTO->choice,
+                'offerer_approval' => $DTO->choice,
             ]);
         } elseif ((int) $meeting->adverter_id === (int) $loggedInUser) {
             $meeting->update([
@@ -74,13 +79,15 @@ class MeetingService implements IMeetingService
         $this->CheckMeetingStatus($meeting);
     }
 
-    public function GetConflictedMeetings(): Collection{
-        return Meeting::with(['adverter','offerer','offer','advert','meetingType'])->where('status',StatusTypes::Conflicted)->get();
+    public function GetConflictedMeetings(): Collection
+    {
+        return Meeting::with(['adverter', 'offerer', 'offer', 'advert', 'meetingType'])->where('status', StatusTypes::Conflicted)->get();
     }
 
-    public function DecideResult(DecideResultDTO $DTO){
+    public function DecideResult(DecideResultDTO $DTO)
+    {
 
-        $meeting = Meeting::with(['adverter.credits','offerer.credits',])->findOrFail($DTO->meetingId);
+        $meeting = Meeting::with(['adverter.credits', 'offerer.credits',])->findOrFail($DTO->meetingId);
 
         if ($meeting->status === StatusTypes::Completed) {
             throw new \Exception('Meeting result has already been decided.');
@@ -94,8 +101,7 @@ class MeetingService implements IMeetingService
 
         if ($DTO->operation) {
             $user->credits->increment('credit_points');
-        } 
-        else {
+        } else {
             if ($user->credits->credit_points <= 0) {
                 throw new \Exception('User does not have enough credits.');
             }
@@ -104,34 +110,48 @@ class MeetingService implements IMeetingService
         }
     }
 
-    private function CheckMeetingStatus(Meeting $meeting){
+    private function CheckMeetingStatus(Meeting $meeting)
+    {
 
         if ($meeting->status === StatusTypes::Completed) {
             return;
         }
 
-        if (($meeting->offerer_approval===StatusTypes::Accepted && $meeting->adverter_approval===StatusTypes::Rejected)||
-                ($meeting->offerer_approval===StatusTypes::Rejected && $meeting->adverter_approval===StatusTypes::Accepted)) 
-        {
+        if (
+            ($meeting->offerer_approval === StatusTypes::Accepted && $meeting->adverter_approval === StatusTypes::Rejected) ||
+            ($meeting->offerer_approval === StatusTypes::Rejected && $meeting->adverter_approval === StatusTypes::Accepted)
+        ) {
             $meeting->status = StatusTypes::Conflicted;
             $meeting->save();
             //BİLDİRİM AT
-        }
-        elseif ($meeting->offerer_approval===StatusTypes::Accepted && $meeting->adverter_approval===StatusTypes::Accepted) {
+        } elseif ($meeting->offerer_approval === StatusTypes::Accepted && $meeting->adverter_approval === StatusTypes::Accepted) {
             $adverterCredits = $meeting->adverter->credits;
             $offererCredits = $meeting->offerer->credits;
 
             $adverterCredits->decrement('credit_points');
             $offererCredits->increment('credit_points');
 
-            $meeting->status =  StatusTypes::Completed;
+            $meeting->status = StatusTypes::Completed;
             $meeting->save();
 
             return;
-        }
-        else{
-           return;
+        } else {
+            return;
         }
     }
 
+    public function meetingTypes(): array
+    {
+        $cacheKey = 'meetingTypes';
+        $cached = Cache::get($cacheKey);
+
+        if ($cached) {
+            return $cached;
+        }
+
+        $meetingTypes = MeetingType::all()->toArray();
+        Cache::forever($cacheKey, $meetingTypes);
+
+        return $meetingTypes;
+    }
 }
