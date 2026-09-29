@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth-service';
+import { AuthService } from '../../features/auth/services/auth-service';
 
 @Component({
   selector: 'app-login',
@@ -14,10 +14,13 @@ export class Login {
 
 
   onSubmitHandler = () => {
-    if (!this.loginForm.value.email || !this.loginForm.value.password) { return; }
-    this.authService.login({
-      email: this.loginForm.value.email, password: this.loginForm.value.password
-    }).subscribe({
+    const { email, password } = this.loginForm.getRawValue();
+
+    if (!email || !password) {
+      return;
+    }
+
+    this.authService.login({ email, password }).subscribe({
       next: (response) => {
         console.log(response);
         localStorage.setItem("ss-access-token", response.data);
