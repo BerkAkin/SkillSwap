@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { Home } from './pages/home/home';
 import { Adverts } from './pages/adverts/adverts';
 import { Whoami } from './pages/whoami/whoami';
-import { Login } from './pages/login/login';
 import { Register } from './pages/register/register';
 
 export const routes: Routes = [
