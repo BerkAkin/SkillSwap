@@ -1,0 +1,67 @@
+<div class="border border-gray-200 bg-white shadow-xs rounded-xl min-w-full">
+    <div class="flex items-center justify-center flex-col">
+        <h3 class="font-changa text-slate-600 font-bold text-5xl my-2 mt-4">Sign Up !</h3>
+        <p class="font-rubik text-slate-400 my-2 text-sm">Create your account and start Swapping Today
+            !</p>
+    </div>
+    <form (ngSubmit)="onSubmitHandler()" [formGroup]="registerForm" class="p-5">
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <label for="firstname" class="text-slate-600 font-bold text-sm">Firstname*
+                    @if(registerForm.controls.firstname.touched && registerForm.controls.firstname.invalid){
+                    <small class="text-xs text-red-600">Invalid</small>
+                    }
+                </label>
+                <input formControlName="firstname" type="text" id="firstname" class="miniInputs"
+                    placeholder="Someone Firstname">
+            </div>
+            <div>
+                <label for="lastname" class="text-slate-600 font-bold text-sm">Lastname*
+                    @if(registerForm.controls.lastname.touched && registerForm.controls.lastname.invalid){
+                    <small class="text-xs text-red-600">Invalid</small>
+                    }
+                </label>
+                <input formControlName="lastname" type="text" id="lastname" class="miniInputs"
+                    placeholder="Someone Lastname">
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <label for="email" class="text-slate-600 font-bold text-sm">E-Mail*
+                    @if(registerForm.controls.email.touched && registerForm.controls.email.invalid){
+                    <small class="text-xs text-red-600">Invalid</small>
+                    }
+                </label>
+                <input formControlName="email" type="text" id="email" class="miniInputs" placeholder="Someone@mail.com">
+            </div>
+            <div>
+                <label for="password" class="text-slate-600 font-bold text-sm">Password*
+                    @if(registerForm.controls.password.touched && registerForm.controls.password.invalid){
+                    <small class="text-xs text-red-600">Invalid</small>
+                    }
+                </label>
+                <input formControlName="password" type="text" id="password" class="miniInputs">
+            </div>
+        </div>
+
+
+        <label for="phone_number" class="text-slate-600 font-bold text-sm">Phone Number*
+            @if(registerForm.controls.phone_number.touched && registerForm.controls.phone_number.invalid){
+            <small class="text-xs text-red-600">Invalid</small>
+            }
+        </label>
+        <input formControlName="phone_number" type="text" id="phone_number" class="miniInputs" placeholder="1234567890">
+
+        <label for="gender" class="text-slate-600 font-bold text-sm">Gender*
+            @if(registerForm.controls.gender.touched && registerForm.controls.gender.invalid){
+            <small class="text-xs text-red-600">Invalid</small>
+            }
+        </label>
+        <input formControlName="gender" type="text" id="gender" class="miniInputs" placeholder="M/F">
+
+        <div class="h-[33%] flex justify-center items-center">
+            <button type="submit" class="subButton font-rubik ">Register</button>
+        </div>
+    </form>
+</div>
