@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RegisterComponent } from '../../features/auth/components/register-component/register-component';
 
 @Component({
   selector: 'app-register',
-  imports: [],
+  imports: [RegisterComponent],
   templateUrl: './register.html',
   styleUrl: './register.css',
 })
-export class Register {}
+export class Register { }
