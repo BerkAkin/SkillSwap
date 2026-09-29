@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from '../../features/auth/services/auth-service';
+import { AuthService } from '../../services/auth-service';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-login-component',
   imports: [ReactiveFormsModule],
-  templateUrl: './login.html',
-  styleUrl: './login.css',
+  templateUrl: './login-component.html',
+  styleUrl: './login-component.css',
 })
 export class Login {
 
