@@ -63,10 +63,10 @@ Route::middleware(['auth:sanctum', 'throttle:general'])->group(function () {
 
 });
 
+Route::get('/skills/{id}', [SkillController::class, 'show']);
 
 //ADMIN CRUD OPS
 Route::middleware(['auth:sanctum', 'role:admin', 'throttle:admin'])->group(function () {
-    Route::get('/skills/{id}', [SkillController::class, 'show']);
     Route::post('/skills', [SkillController::class, 'store']);
     Route::put('/skills/{id}', [SkillController::class, 'update']);
     Route::delete('/skills/{id}', [SkillController::class, 'destroy']);
