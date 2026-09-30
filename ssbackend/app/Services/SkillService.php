@@ -25,7 +25,7 @@ class SkillService implements ISkillService
                 where('name', 'ilike', "%{$params['search']}%")
                 ->orderBy($params['sort'])
                 ->skip(($params['page'] - 1) * 1)
-                ->take(1)
+                ->take(20)
                 ->get();
             return GetResource::collection($skills)->resolve();
         });
