@@ -1,0 +1,18 @@
+@reference "tailwindcss";
+
+.header-content {
+    @apply text-3xl font-semibold leading-tight tracking-tight text-gray-800 md:text-5xl
+}
+
+
+.image-card {
+    @apply relative overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm
+}
+
+.container-div {
+    @apply grid grid-cols-1 items-center gap-10 md:grid-cols-12 md:gap-14
+}
+
+.ghost-container {
+    @apply absolute h-full w-full rounded-md border
+}
