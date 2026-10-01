@@ -51,7 +51,7 @@ export class Home {
     {
       user: 'Pelin G.',
       comment:
-        'The platform is very easy to navigate. Finding a skill, checking the details, and connecting with someone takes only a few minutes.',
+        'The platform is easy to navigate. Finding a skill, checking the details, and connecting with someone takes only a minute.',
       point: 4,
     },
     {
