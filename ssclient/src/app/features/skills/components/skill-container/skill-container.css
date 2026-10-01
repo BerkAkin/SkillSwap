@@ -1,0 +1,23 @@
+@keyframes pill-animate {
+    from {
+        transform: translateX(0%);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.pill-animate {
+    animation: pill-animate 25s linear infinite;
+
+}
+
+.pill-reverse-animate {
+    animation: pill-animate 25s linear infinite reverse;
+}
+
+.pill-animate,
+.pill-reverse-animate {
+    width: max-content;
+}
