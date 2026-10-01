@@ -1,16 +1,23 @@
-.link{
-    font-family: 'ssRubik','sans-serif';
+@reference "tailwindcss";
+
+.link {
+    font-family: 'ssRubik', 'sans-serif';
     font-weight: 400;
     color: rgb(150, 150, 150);
 }
-.link:hover{
+
+.link:hover {
     color: #0891b2;
     transform: scale(1.1);
     transition: ease-in-out 0.2s;
 }
 
-.active-link{
+.active-link {
     font-size: larger;
-    color: #f97316 ;
+    color: #f97316;
     transition: ease-in-out 0.1s;
+}
+
+.footer-btn {
+    @apply bg-orange-500 text-white hover:bg-white hover:border-orange-500 hover:border hover:text-orange-500 font-bold rounded-sm cursor-pointer px-4 py-2 font-medium transition-all mt-6
 }
