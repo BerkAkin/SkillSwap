@@ -1,13 +1,13 @@
 <div class="border border-gray-200 bg-white shadow-xs rounded-xl min-w-full">
     <div class="flex items-center justify-center flex-col">
-        <h3 class="font-changa text-slate-600 font-bold text-5xl my-2 mt-4">Sign Up !</h3>
-        <p class="font-rubik text-slate-400 my-2 text-sm">Create your account and start Swapping Today
+        <h3 class="font-changa text-gray-700 font-bold text-5xl my-2 mt-4">Sign Up !</h3>
+        <p class="font-rubik text-gray-400 my-2 text-sm">Create your account and start Swapping Today
             !</p>
     </div>
     <form (ngSubmit)="onSubmitHandler()" [formGroup]="registerForm" class="p-5">
         <div class="grid grid-cols-2 gap-4">
             <div>
-                <label for="firstname" class="text-slate-600 font-bold text-sm">Firstname*
+                <label for="firstname" class="text-gray-700 font-bold text-sm">Firstname*
                     @if(registerForm.controls.firstname.touched && registerForm.controls.firstname.invalid){
                     <small class="text-xs text-red-600">Invalid</small>
                     }
@@ -16,7 +16,7 @@
                     placeholder="Someone Firstname">
             </div>
             <div>
-                <label for="lastname" class="text-slate-600 font-bold text-sm">Lastname*
+                <label for="lastname" class="text-gray-700 font-bold text-sm">Lastname*
                     @if(registerForm.controls.lastname.touched && registerForm.controls.lastname.invalid){
                     <small class="text-xs text-red-600">Invalid</small>
                     }
@@ -28,7 +28,7 @@
 
         <div class="grid grid-cols-2 gap-4">
             <div>
-                <label for="email" class="text-slate-600 font-bold text-sm">E-Mail*
+                <label for="email" class="text-gray-700 font-bold text-sm">E-Mail*
                     @if(registerForm.controls.email.touched && registerForm.controls.email.invalid){
                     <small class="text-xs text-red-600">Invalid</small>
                     }
@@ -36,7 +36,7 @@
                 <input formControlName="email" type="text" id="email" class="miniInputs" placeholder="Someone@mail.com">
             </div>
             <div>
-                <label for="password" class="text-slate-600 font-bold text-sm">Password*
+                <label for="password" class="text-gray-700 font-bold text-sm">Password*
                     @if(registerForm.controls.password.touched && registerForm.controls.password.invalid){
                     <small class="text-xs text-red-600">Invalid</small>
                     }
@@ -46,14 +46,14 @@
         </div>
 
 
-        <label for="phone_number" class="text-slate-600 font-bold text-sm">Phone Number*
+        <label for="phone_number" class="text-gray-700 font-bold text-sm">Phone Number*
             @if(registerForm.controls.phone_number.touched && registerForm.controls.phone_number.invalid){
             <small class="text-xs text-red-600">Invalid</small>
             }
         </label>
         <input formControlName="phone_number" type="text" id="phone_number" class="miniInputs" placeholder="1234567890">
 
-        <label for="gender" class="text-slate-600 font-bold text-sm">Gender*
+        <label for="gender" class="text-gray-700 font-bold text-sm">Gender*
             @if(registerForm.controls.gender.touched && registerForm.controls.gender.invalid){
             <small class="text-xs text-red-600">Invalid</small>
             }
