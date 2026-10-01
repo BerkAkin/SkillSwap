@@ -8,12 +8,12 @@
         </li>
         <li class="col-span-8 flex justify-center pt-2">
             <span class="mx-6 link text-lg"><a routerLink="/adverts" routerLinkActive="active-link">Adverts</a></span>
-            <span class="mx-6 link text-lg"><a routerLink="/whoami" routerLinkActive="active-link">About Me</a></span>
+            <span class="mx-6 link text-lg"><a routerLink="/whoami" routerLinkActive="active-link">About
+                    Me</a></span>
         </li>
         <li class="col-span-2 flex justify-center items-end me-2 relative">
-            <button class="rounded-md auth-link px-2 mx-1" (click)="toggleLogin()">Login</button>
-            <a class="rounded-md auth-link px-2 mx-1" routerLink="/register" routerLinkActive="active-auth-link">Sign
-                Up</a>
+            <button class="rounded-md auth-link px-2 mx-1 " (click)="toggleLogin()">Login</button>
+            <a class="rounded-md auth-link px-2 mx-1 " routerLink="/register">Sign Up</a>
             @if (loginState) {
             <app-login-component />
             }
