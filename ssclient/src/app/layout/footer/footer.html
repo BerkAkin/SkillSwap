@@ -19,20 +19,22 @@
         </div>
 
         <div class="col-span-3 flex-col flex items-center">
-            <h3 class="font-rubik text-gray-600 border-b pb-2 border-slate-200 font-medium mt-3">Explore</h3>
-            <div class="grid grid-cols-1 gap-y-2 mt-2 font-rubik text-center text-gray-600 transition-colors">
-                <a routerLink="/home" class="hover:text-orange-500"> Home</a>
-                <a routerLink="/adverts" class="hover:text-orange-500"> Adverts </a>
-                <a routerLink="/whoami" class="hover:text-sky-500"> About Me</a>
-                <a routerLink="/register" class="hover:text-sky-500">Register</a>
+            <div class="grid grid-cols-1 gap-y-4 mt-2 font-rubik text-center text-gray-600 transition-colors">
+                <app-clickable-component
+                    [properties]="{type:'anchor',text:'Home', colorScheme:'stone', anchURL:'/home'}" />
+                <app-clickable-component
+                    [properties]="{type:'anchor',text:'Adverts', colorScheme:'stone', anchURL:'/adverts'}" />
+                <app-clickable-component
+                    [properties]="{type:'anchor',text:'About Me', colorScheme:'stone', anchURL:'/whoami'}" />
+                <app-clickable-component
+                    [properties]="{type:'anchor',text:'Register', colorScheme:'stone', anchURL:'/register'}" />
             </div>
         </div>
         <div class="col-span-4 flex flex-col items-end">
-            <p class="text-gray-600 leading-8 font-rubik mt-3">
+            <p class="text-gray-600 leading-8 font-rubik my-4">
                 Discover something new or share what you already know.</p>
-            <a routerLink="/register" class="footer-btn">
-                Start Swapping →
-            </a>
+            <app-clickable-component
+                [properties]="{type:'anchor',text:'Start Swapping ->', colorScheme:'orange', anchURL:'/register'}" />
         </div>
     </div>
 
