@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth-service';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule, } from '@angular/forms';
 import { IRegisterResponse } from '../../models/IRegisterResponse';
+import { ClickableComponent } from '../../../general/components/clickable-component/clickable-component';
 
 @Component({
   selector: 'app-register-component',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ClickableComponent],
   templateUrl: './register-component.html',
   styleUrl: './register-component.css',
 })

@@ -60,8 +60,9 @@
         </label>
         <input formControlName="gender" type="text" id="gender" class="miniInputs" placeholder="M/F">
 
-        <div class="h-[33%] flex justify-center items-center">
-            <button type="submit" class="subButton font-rubik ">Register</button>
+        <div class="h-[33%] flex justify-center items-center mt-4">
+            <app-clickable-component
+                [properties]="{type:'button',text:'Join & Start Swapping', colorScheme:'orange', btnType:'submit'}" />
         </div>
     </form>
 </div>
