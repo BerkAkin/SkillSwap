@@ -7,15 +7,44 @@
             </a>
         </li>
         <li class="col-span-8 flex justify-center pt-2">
-            <span class="mx-6 link text-lg"><a routerLink="/adverts" routerLinkActive="active-link">Adverts</a></span>
-            <span class="mx-6 link text-lg"><a routerLink="/whoami" routerLinkActive="active-link">About
-                    Me</a></span>
+            <span>
+                <app-clickable-component
+                    [properties]="{type:'anchor',text:'Adverts', colorScheme:'stone', anchURL:'/adverts'}" />
+            </span>
+            <span class="mx-2">
+                <app-clickable-component
+                    [properties]="{type:'anchor',text:'About Me', colorScheme:'stone', anchURL:'/whoami'}" />
+            </span>
         </li>
-        <li class="col-span-2 flex justify-center items-end me-2 relative">
-            <button class="rounded-md auth-link px-2 mx-1 " (click)="toggleLogin()">Login</button>
-            <a class="rounded-md auth-link px-2 mx-1 " routerLink="/register">Sign Up</a>
-            @if (loginState) {
-            <app-login-component />
+        <li clickOutside (clickedOutside)="closePopUps()"
+            class="col-span-2 flex gap-x-2 justify-center items-center relative">
+
+            @if(authService.isAuthenticated()) {
+            <span class="mx-6 mt-4 flex items-end">
+                <button class="cursor-pointer" type="button" (click)="toggleProfileDropdown()">
+                    <div class="size-10 rounded-full border border-slate-400 shadow-xs"></div>
+                </button>
+            </span>
+            }
+            @else{
+            <app-clickable-component
+                [properties]="{type:'button',text:'Login', colorScheme:'stone', btnFn:()=>toggleLoginPopUp()}" />
+
+            <app-clickable-component
+                [properties]="{type:'anchor',text:'Register', colorScheme:'stone', anchURL:'/register'}" />
+            }
+
+
+            @if (loginPopUpState() && !authService.isAuthenticated()) {
+            <app-popup-wrapper-component title="Login">
+                <app-login-popup-component />
+            </app-popup-wrapper-component>
+            }
+
+            @if (profileDropdownState() && authService.isAuthenticated()) {
+            <app-popup-wrapper-component title="My Profile">
+                <app-profile-popup-component />
+            </app-popup-wrapper-component>
             }
         </li>
     </ul>
