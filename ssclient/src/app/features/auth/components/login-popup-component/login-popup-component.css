@@ -1,0 +1,11 @@
+@reference "tailwindcss";
+
+.miniInputs {
+    @apply px-2 text-base w-full text-gray-600 mb-4 border rounded-sm border-gray-400 bg-white;
+    height: 30px;
+
+}
+
+.miniInputs:focus {
+    outline: none;
+}

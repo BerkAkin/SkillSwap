@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth-service';
+import { ClickableComponent } from '../../../general/components/clickable-component/clickable-component';
 
 @Component({
-  selector: 'app-login-component',
-  imports: [ReactiveFormsModule],
-  templateUrl: './login-component.html',
-  styleUrl: './login-component.css',
+  selector: 'app-login-popup-component',
+  imports: [ReactiveFormsModule, ClickableComponent],
+  templateUrl: './login-popup-component.html',
+  styleUrl: './login-popup-component.css',
 })
-export class Login {
+export class LoginPopupComponent {
 
   constructor(private authService: AuthService) { }
 
@@ -22,7 +23,6 @@ export class Login {
 
     this.authService.login({ email, password }).subscribe({
       next: (response) => {
-        console.log(response);
         localStorage.setItem("ss-access-token", response.data);
       },
       error: (error) => {
