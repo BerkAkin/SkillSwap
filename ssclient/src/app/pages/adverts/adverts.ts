@@ -3,10 +3,11 @@ import { AdvertCard } from '../../features/adverts/components/advert-card/advert
 import { AdvertTable } from '../../features/adverts/components/advert-table/advert-table';
 import { AdvertsService } from '../../features/adverts/services/adverts-service';
 import { IAdvertResponse } from '../../features/adverts/models/IAdvertResponse';
+import { ClickableComponent } from '../../features/general/components/clickable-component/clickable-component';
 
 @Component({
   selector: 'app-adverts',
-  imports: [AdvertCard, AdvertTable],
+  imports: [AdvertCard, AdvertTable, ClickableComponent],
   templateUrl: './adverts.html',
   styleUrl: './adverts.css',
 })
