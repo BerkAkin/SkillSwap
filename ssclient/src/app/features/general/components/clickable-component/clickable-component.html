@@ -1,0 +1,7 @@
+@if(this.properties().type==='button'){
+<button [type]="this.properties().btnType" [ngClass]="getStyle()" type="button"
+    (click)="this.properties().btnFn?.()">{{this.properties().text}}</button>
+}
+@else {
+<a [ngClass]="getStyle()" [routerLink]="this.properties().anchURL">{{this.properties().text}}</a>
+}
