@@ -14,5 +14,5 @@
 }
 
 .ghost-container {
-    @apply absolute h-full w-full rounded-md border
+    @apply absolute h-full w-full rounded-md border-2 border-dashed
 }
