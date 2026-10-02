@@ -14,9 +14,9 @@
             <p class="text-sky-500 text-sm">
                 {{data()?.user?.name}}
             </p>
-            <button
-                class="cursor-pointer rounded-md px-2 border border-emerald-600 font-medium text-emerald-600 hover:bg-emerald-600 hover:text-white transition"
-                onclick="alert(2)">Offer !</button>
+            <app-clickable-component
+                [properties]="{type:'button',text:'Offer!', colorScheme:'emerald', btnFn:()=>alert()}" />
+
         </div>
     </div>
     <!-- {{data()?.id}} -->
