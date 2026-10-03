@@ -1,7 +1,7 @@
 @reference "tailwindcss";
 
 .miniInputs {
-    @apply px-2 text-base w-full text-gray-600 mb-4 border rounded-sm border-gray-400 bg-white;
+    @apply px-2 text-base w-full text-gray-600 mb-4 border border-gray-400 bg-white;
     height: 30px;
 
 }
@@ -11,5 +11,5 @@
 }
 
 .subButton {
-    @apply bg-orange-500 my-6 text-white hover:bg-white hover:border-orange-500 hover:border hover:text-orange-500 font-bold p-1 text-lg rounded-sm transition cursor-pointer w-full h-[50px];
+    @apply bg-orange-500 my-6 text-white hover:bg-white hover:border-orange-500 hover:border hover:text-orange-500 font-bold p-1 text-lg transition cursor-pointer w-full h-[50px];
 }
