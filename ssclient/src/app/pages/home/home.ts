@@ -5,11 +5,10 @@ import { IInfoCardModel } from '../../features/infos/models/IInfoCardModel';
 import { InfoSection } from '../../features/infos/components/info-section/info-section';
 import { ICommentCardModel } from '../../features/infos/models/ICommentCardModel';
 import { CommentCard } from '../../features/comments/components/comment-card/comment-card';
-import { SkillContainer } from '../../features/skills/components/skill-container/skill-container';
 
 @Component({
   selector: 'app-home',
-  imports: [InfoBox, InfoCard, InfoSection, CommentCard, SkillContainer],
+  imports: [InfoBox, InfoCard, InfoSection, CommentCard,],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
