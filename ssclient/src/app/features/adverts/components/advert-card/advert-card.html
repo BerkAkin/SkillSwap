@@ -1,22 +1,32 @@
-<div class="border border-gray-200 h-[200px] max-h-[200px] rounded-md shadow-sm bg-white card">
-    <div class="size-full container font-rubik">
-        <div class="h-[20%] flex items-center justify-between px-3">
-            <p class="text-gray-700 font-medium">
+<div class="border border-gray-200 h-[200px] max-h-[200px] shadow-sm bg-whitecard grid grid-cols-12">
+    <div class="col-span-2 p-6">
+        <div class="border size-full border-gray-200"></div>
+    </div>
+    <div class="col-span-8 p-6">
+        <div class="h-[30%] text-start">
+            <p class="text-gray-700 font-medium text-xl font-rubik">
                 {{data()?.skill?.name}}
             </p>
         </div>
-        <div class="h-[65%] flex items-center p-3 justify-center border-y border-slate-200">
-            <p class="text-sm text-gray-600 text-center">
+        <div class="h-[40%] text-start max-w-[35%]">
+            <p class="text-lg text-gray-600 font-rubik">
                 {{data()?.skill?.description}}
             </p>
         </div>
-        <div class="h-[15%] flex items-center ps-2 pe-1 py-1 justify-between">
-            <p class="text-sky-500 text-sm">
+        <div class="h-[30%] flex items-end text-start">
+            <p class="text-sky-600  font-semibold">
                 {{data()?.user?.name}}
             </p>
+        </div>
+    </div>
+    <div class="col-span-2 p-6">
+        <div class="h-[30%]">
+        </div>
+        <div class="h-[40%]">
+        </div>
+        <div class="h-[30%] flex items-center justify-end">
             <app-clickable-component
-                [properties]="{type:'button',text:'Offer!', colorScheme:'emerald', btnFn:()=>alert()}" />
-
+                [properties]="{type:'button',text:'Offer ➜', colorScheme:'emerald', btnFn:()=>alert()}" />
         </div>
     </div>
     <!-- {{data()?.id}} -->

@@ -1,19 +1,17 @@
-<nav
-    class="font-rubik border border-slate-200 container mx-auto rounded-b-xl h-[100px] bg-white shadow-md flex items-center">
+<nav class="font-rubik border border-gray-200 h-[100px] bg-white shadow-md flex items-center">
     <ul class="grid grid-cols-12 w-full items-center">
         <li class="col-span-2 flex justify-center items-center overflow-hidden">
             <a routerLink="/home">
                 <app-brand />
             </a>
         </li>
-        <li class="col-span-8 flex justify-center pt-2">
+        <li class="col-span-8 flex justify-start ps-10 space-x-8 pt-2">
+            <span>
+                <app-clickable-component [properties]="{type:'anchor',text:'Home', colorScheme:'stone', anchURL:'/'}" />
+            </span>
             <span>
                 <app-clickable-component
-                    [properties]="{type:'anchor',text:'Adverts', colorScheme:'stone', anchURL:'/adverts'}" />
-            </span>
-            <span class="mx-2">
-                <app-clickable-component
-                    [properties]="{type:'anchor',text:'About Me', colorScheme:'stone', anchURL:'/whoami'}" />
+                    [properties]="{type:'anchor',text:'Explore', colorScheme:'stone', anchURL:'/adverts'}" />
             </span>
         </li>
         <li clickOutside (clickedOutside)="closePopUps()"
@@ -22,7 +20,7 @@
             @if(authService.isAuthenticated()) {
             <span class="mx-6 mt-4 flex items-end">
                 <button class="cursor-pointer" type="button" (click)="toggleProfileDropdown()">
-                    <div class="size-10 rounded-full border border-slate-400 shadow-xs"></div>
+                    <div class="size-10 rounded-full border border-gray-400 shadow-xs"></div>
                 </button>
             </span>
             }
