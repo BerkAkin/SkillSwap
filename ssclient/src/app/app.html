@@ -1,7 +1,12 @@
 <div class="container-fluid min-h-screen flex flex-col">
     <app-navbar />
+    <div class="bg-gray-50">
+        <app-top-info />
+    </div>
     <main class="flex-1">
         <router-outlet />
     </main>
-    <app-footer />
+    <div class="min-h-[500px] flex flex-col justify-end">
+        <app-footer />
+    </div>
 </div>
