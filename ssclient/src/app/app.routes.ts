@@ -1,9 +1,8 @@
 import { Routes } from '@angular/router';
 import { Home } from './pages/home/home';
 import { Adverts } from './pages/adverts/adverts';
-import { Whoami } from './pages/whoami/whoami';
 import { Register } from './pages/register/register';
-import { CreateAdvert } from './pages/create-advert/create-advert';
+import { MyAdverts } from './pages/create-advert/my-adverts';
 
 export const routes: Routes = [
   {
@@ -20,12 +19,8 @@ export const routes: Routes = [
     component: Adverts,
   },
   {
-    path: 'create-advert',
-    component: CreateAdvert,
-  },
-  {
-    path: 'whoami',
-    component: Whoami,
+    path: 'my-adverts',
+    component: MyAdverts,
   },
   {
     path: 'register',
