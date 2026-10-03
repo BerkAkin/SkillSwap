@@ -13,5 +13,5 @@
 }
 
 .footer-btn {
-    @apply border border-orange-500 bg-orange-500 text-white hover:bg-white hover:text-orange-500 font-bold rounded-sm cursor-pointer px-4 py-2 font-medium transition mt-6
+    @apply border border-orange-500 bg-orange-500 text-white hover:bg-white hover:text-orange-500 font-bold cursor-pointer px-4 py-2 font-medium transition mt-6
 }
