@@ -1,14 +1,44 @@
 <div class="container mx-auto max-h-[800px] h-[800px] my-12">
-    <div class="grid grid-cols-12">
-        <div class="col-span-2"></div>
-        <div class="col-span-10">
-            <div class="flex justify-end">
-                <app-clickable-component
-                    [properties]="{type:'anchor',text:'Create Advert +', colorScheme:'emerald', anchURL:'/create-advert'}" />
+
+    <div class="grid grid-cols-12 mt-6 gap-8">
+
+        <div class="col-span-3">
+            <div class="w-full h-[270px] m-h-[270px] px-4">
+                <div class="size-full bg-white border border-gray-200 shadow-sm space-y-2">
+                    <div class="text-center mt-4">
+                        <p class="text-2xl font-semibold text-gray-700 font-rubik">Filters</p>
+                    </div>
+                    <div class="p-3">
+                        <select
+                            class="h-[40px] min-w-full text-sm ps-1 text-gray-600 border bg-white border-gray-200 focus:outline-none font-semibold">
+                            <option selected>Category:</option>
+                        </select>
+                    </div>
+                    <div class="p-3">
+                        <select
+                            class="h-[40px] min-w-full text-sm ps-1 text-gray-600 border bg-white border-gray-200 focus:outline-none font-semibold">
+                            <option selected>Language:</option>
+                        </select>
+                    </div>
+                    <div class="p-3 flex justify-center">
+                        <app-clickable-component
+                            [properties]="{type:'button',text:'Apply Filters', colorScheme:'orange'}" />
+                    </div>
+                </div>
             </div>
-            <div class="grid grid-cols-12 gap-4">
+        </div>
+
+        <div class="col-span-9">
+            <div class="flex justify-between">
+                <p class="text-2xl font-semibold text-gray-700 font-rubik">Latest Skill Offers</p>
+                <select
+                    class="w-[250px] text-sm ps-1 text-gray-600 border shadow-sm bg-white border-gray-200 focus:outline-none font-semibold">
+                    <option selected>Sort By:</option>
+                </select>
+            </div>
+            <div class="mt-4 space-y-4">
                 @for (advert of adverts()?.data; track advert.id) {
-                <div class="col-span-2">
+                <div class="col-span-12">
                     <app-advert-card [data]="advert" />
                 </div>
                 }
@@ -17,5 +47,7 @@
                 <app-advert-table [data]="adverts()" />
             </div>
         </div>
+
     </div>
+
 </div>
