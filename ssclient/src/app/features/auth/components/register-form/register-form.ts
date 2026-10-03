@@ -5,12 +5,12 @@ import { IRegisterResponse } from '../../models/IRegisterResponse';
 import { ClickableComponent } from '../../../general/components/clickable-component/clickable-component';
 
 @Component({
-  selector: 'app-register-component',
+  selector: 'app-register-form',
   imports: [ReactiveFormsModule, ClickableComponent],
-  templateUrl: './register-component.html',
-  styleUrl: './register-component.css',
+  templateUrl: './register-form.html',
+  styleUrl: './register-form.css',
 })
-export class RegisterComponent {
+export class RegisterForm {
   constructor(private authService: AuthService) { }
 
   registerForm = new FormGroup({

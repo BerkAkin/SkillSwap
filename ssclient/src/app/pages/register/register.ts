@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { RegisterComponent } from '../../features/auth/components/register-component/register-component';
 import { NgOptimizedImage } from '@angular/common';
+import { RegisterForm } from '../../features/auth/components/register-form/register-form';
 
 @Component({
   selector: 'app-register',
-  imports: [RegisterComponent, NgOptimizedImage],
+  imports: [RegisterForm, NgOptimizedImage],
   templateUrl: './register.html',
   styleUrl: './register.css',
 })

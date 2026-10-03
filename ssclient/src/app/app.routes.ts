@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { Home } from './pages/home/home';
 import { Adverts } from './pages/adverts/adverts';
 import { Register } from './pages/register/register';
-import { MyAdverts } from './pages/create-advert/my-adverts';
+import { UserAdverts } from './pages/user/user-adverts/user-adverts';
 
 export const routes: Routes = [
   {
@@ -20,7 +20,7 @@ export const routes: Routes = [
   },
   {
     path: 'my-adverts',
-    component: MyAdverts,
+    component: UserAdverts,
   },
   {
     path: 'register',

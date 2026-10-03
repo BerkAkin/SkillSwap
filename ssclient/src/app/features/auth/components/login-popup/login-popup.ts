@@ -4,12 +4,12 @@ import { AuthService } from '../../services/auth-service';
 import { ClickableComponent } from '../../../general/components/clickable-component/clickable-component';
 
 @Component({
-  selector: 'app-login-popup-component',
+  selector: 'app-login-popup',
   imports: [ReactiveFormsModule, ClickableComponent],
-  templateUrl: './login-popup-component.html',
-  styleUrl: './login-popup-component.css',
+  templateUrl: './login-popup.html',
+  styleUrl: './login-popup.css',
 })
-export class LoginPopupComponent {
+export class LoginPopup {
 
   constructor(private authService: AuthService) { }
 
