@@ -2,21 +2,23 @@
 
 @font-face {
     font-family: 'ssChanga';
-    src:url('assets/fonts/changa.ttf') format('truetype');
+    src: url('assets/fonts/changa.ttf') format('truetype');
     font-style: normal;
 }
+
 @font-face {
     font-family: 'ssRubik';
-    src:url('assets/fonts/rubik.ttf') format('truetype');
+    src: url('assets/fonts/rubik.ttf') format('truetype');
 }
 
-body{
-    background-color: rgb(249, 249, 249);
+body {
+    background-color: rgb(255, 255, 255);
 }
 
-.font-changa{
+.font-changa {
     font-family: 'ssChanga', sans-serif;
 }
-.font-rubik{
+
+.font-rubik {
     font-family: 'ssRubik', sans-serif;
 }
