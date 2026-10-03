@@ -1,0 +1,10 @@
+@reference "tailwindcss";
+
+.header-content {
+    @apply text-4xl font-semibold leading-tight tracking-tight text-gray-700 md:text-4xl
+}
+
+
+.container-div {
+    @apply grid grid-cols-1 items-center gap-10 md:grid-cols-12 md:gap-14
+}
