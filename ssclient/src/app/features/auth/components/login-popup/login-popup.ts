@@ -22,8 +22,8 @@ export class LoginPopup {
     }
 
     this.authService.login({ email, password }).subscribe({
-      next: (response) => {
-        localStorage.setItem("ss-access-token", response.data);
+      next: () => {
+        console.log("Login Success");
       },
       error: (error) => {
         console.log("Login error", error)
