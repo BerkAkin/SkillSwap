@@ -9,20 +9,24 @@ use Illuminate\Support\Facades\Auth;
 
 class UserService implements IUserService
 {
-    public function __construct(){}
+    public function __construct()
+    {
+    }
 
-    public function meInfo(): User{
+    public function meInfo(): User
+    {
         return User::with([
-            'skills:id,name,description',
+            'skills:id,name',
             'wishlist:id,name,description',
             'credits:user_id,credit_points',
             'settings:id,name,description',
             'achievements:id,title,description',
             'socials:id,type',
         ])
-        ->findOrFail(Auth::id());
+            ->findOrFail(Auth::id());
     }
-    public function updateSetting(int $id): Void{
+    public function updateSetting(int $id): void
+    {
         $user = Auth::user();
         $currentSetting = $user->settings()->where('setting_id', $id)->first();
 
@@ -31,8 +35,9 @@ class UserService implements IUserService
             $user->settings()->updateExistingPivot($id, ['is_enabled' => $newState]);
         }
     }
-    public function updateSocial(UpdateSocialDTO $DTO): Void{
+    public function updateSocial(UpdateSocialDTO $DTO): void
+    {
         $user = Auth::user();
-        $user->socials()->updateExistingPivot($DTO->id,['url'=>$DTO->url]);
+        $user->socials()->updateExistingPivot($DTO->id, ['url' => $DTO->url]);
     }
 }
