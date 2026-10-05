@@ -1,7 +1,7 @@
 @reference "tailwindcss";
 
 .header-content {
-    @apply text-4xl font-semibold leading-tight tracking-tight text-gray-700 md:text-4xl
+    @apply text-2xl font-semibold leading-tight tracking-tight text-gray-700 md:text-2xl
 }
 
 
