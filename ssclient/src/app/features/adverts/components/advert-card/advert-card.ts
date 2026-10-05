@@ -10,8 +10,4 @@ import { ClickableComponent } from '../../../general/components/clickable-compon
 })
 export class AdvertCard {
   data = input<IAdvertModel>();
-
-  alert = () => {
-    console.log(12);
-  }
 }
