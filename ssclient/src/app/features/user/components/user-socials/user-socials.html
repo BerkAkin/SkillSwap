@@ -1,0 +1,13 @@
+<div class="space-y-4">
+    <p class="text-gray-700 font-semibold text-xl">Socials</p>
+    @for(social of this.userInfoService.userdata()?.socials; track social.id){
+    <div>
+        <div class="flex justify-between">
+            <p class="text-gray-700 font-semibold">{{social.type}}</p>
+            <app-clickable-component
+                [properties]="{type:'button',text:'X', colorScheme:'red', btnFn:()=>this.removeSocial(social.type)}" />
+        </div>
+        <p class="text-gray-400 font-normal text-sm">{{social.url}}</p>
+    </div>
+    }
+</div>
