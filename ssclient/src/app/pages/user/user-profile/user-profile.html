@@ -1,142 +1,28 @@
-<div class="container mx-auto h-[800px] m-h-[800px] my-12">
+<div class="container mx-auto h-[1100px] max-h-[1100px] my-12">
     <div class="grid grid-cols-12 h-full">
-        <div class="col-span-2 p-6 font-rubik space-y-4">
-            <div class="h-[25%]">
-                <div class="border border-gray-200 size-full"></div>
+        <div class="col-span-2 p-6 space-y-4">
+            <div class="h-[50%]">
+                <app-user-info />
             </div>
-            <div class="h-[5%]">
-                <h2 class="text-4xl text-gray-700 font-semibold font-rubik">
-                    {{this.userInfoService.userdata()?.firstname}}
-                    {{this.userInfoService.userdata()?.lastname}}
-                </h2>
-            </div>
-            <div class="h-[25%] space-y-1">
-                <div>
-                    <p class="text-gray-700 font-semibold">E-Mail:
-                        <span class="text-gray-400 font-normal">
-                            {{this.userInfoService.userdata()?.email}}
-                        </span>
-                    </p>
-                </div>
-                <div>
-                    <p class="text-gray-700 font-semibold">Phone:
-                        <span class="text-gray-400 font-normal">
-                            {{this.userInfoService.userdata()?.phone_number}}
-                        </span>
-                    </p>
-                </div>
-                <div>
-                    <p class="text-gray-700 font-semibold">Gender:
-                        <span class="text-gray-400 font-normal">
-                            {{this.userInfoService.userdata()?.gender}}
-                        </span>
-                    </p>
-                </div>
-                <div>
-                    <p class="text-gray-700 font-semibold">Join:
-                        <span class="text-gray-400 font-normal">
-                            {{this.userInfoService.userdata()?.register_date}}
-                        </span>
-                    </p>
-                </div>
-                <div>
-                    <p class="text-gray-700 font-semibold">Role:
-                        <span class="text-gray-400 font-normal">
-                            {{this.userInfoService.userdata()?.role}}
-                        </span>
-                    </p>
-                </div>
-                <div>
-                    <p class="text-gray-700 font-semibold">Active:
-                        <span class="text-gray-400 font-normal">
-                            {{this.userInfoService.userdata()?.isActive}}
-                        </span>
-                    </p>
-                </div>
-            </div>
-            <div class="h-[45%]">
-                <div class="space-y-2">
-                    <p class="text-gray-700 font-semibold text-xl">Socials</p>
-                    @for(social of this.userInfoService.userdata()?.socials; track social.id){
-                    <div>
-                        <p class="text-gray-700 font-semibold text-sm">
-                            <button class="bg-red-700 text-white px-1 font-bold cursor-pointer">X</button>
-                            {{social.type}}:
-                            <span class="text-gray-400 font-normal">
-                                {{social.url}}
-                            </span>
-                        </p>
-                    </div>
-                    }
-                </div>
+            <div class="h-[40%] my-4">
+                <app-user-socials />
             </div>
         </div>
-        <div class="col-span-10 p-6 font-rubik">
-            <div class="min-h-[25%] h-[25%] overflow-auto">
-                <div class="flex justify-between">
-                    <h4 class="text-gray-700 text-xl font-semibold">Skills</h4>
-                    <div class="space-x-2">
-                        <select
-                            class="w-[120px] text-sm p-1 text-gray-600 border shadow-sm bg-white border-gray-200 focus:outline-none font-semibold">
-                            <option value="">Skill</option>
-                        </select>
-                        <button
-                            class="border border-emerald-600 text-emerald-600 font-semibold cursor-pointer shaodw-sm px-2">+</button>
-                    </div>
-                </div>
-                <div>
-                    @for(skill of this.userInfoService.userdata()?.skills; track skill.id){
-                    <p
-                        class="me-2 my-2 py-1 ps-2 inline-flex max-w-[200px] min-w-[60px] text-sm bg-gray-700 text-white font-semibold">
-                        ✦ {{skill.name}}
-                        <button class="bg-red-600 text-white px-1 font-bold ms-3 me-1 cursor-pointer">X</button>
-                    </p>
-                    }
-                </div>
+        <div class="col-span-10 p-6">
+            <div class="h-[50%]">
+                <app-user-skills />
             </div>
-            <div class="min-h-[70%] h-[70%] grid gap-6 grid-cols-12">
-                <div class="col-span-8">
-                    <div>
-                        <h4 class="text-gray-700 text-xl font-semibold">Wishlist</h4>
-                    </div>
-                    <div class="space-y-2 gap-4 grid grid-cols-12">
-                        @for(wish of this.userInfoService.userdata()?.wishlist; track wish.id){
-                        <div
-                            class="shadow-sm justify-between col-span-3 w-[200px] h-[100px] max-w-[200px] max-h-[100px]">
-                            <div class="bg-gray-700 h-[30%] flex justify-between">
-                                <p class="text-white font-semibold p-1 text-sm">✦ {{wish.name}}</p>
-                                <button
-                                    class="bg-red-600 text-white px-1 mx-1 my-1 font-semibold cursor-pointer">X</button>
-                            </div>
-                            <div class="bg-orange-500 h-[70%]">
-                                <p class="text-white text-sm px-2 py-1">{{wish.description}}</p>
-                            </div>
-                        </div>
-                        }
-                    </div>
-                </div>
-                <div class="col-span-4">
-                    <h4 class="text-gray-700 text-xl font-semibold">Achievements</h4>
-                    <div class="my-4 grid grid-cols-12 gap-5 p-2">
-                        @for(achieve of this.achievementsService.achievements(); track achieve.id){
-                        <div class="col-span-3 relative">
-                            @if( this.userInfoService.userdata()?.achievements?.includes(achieve.id)){
-                            <img [appTooltipDirective]="achieve.description"
-                                [ngSrc]="'/assets/images/achievements/' + achieve.id + '.png'" width="100" height="100"
-                                class="w-[150px] cursor-pointer">
-                            }
-                            @else {
-                            <img [appTooltipDirective]="achieve.description"
-                                [ngSrc]="'/assets/images/achievements/' + achieve.id  + '.png'" width="100" height="100"
-                                class="grayscale w-[150px] cursor-pointer">
-                            }
-                        </div>
-                        }
-                    </div>
-                </div>
+            <div class="h-[40%]">
+                <app-user-achievements />
+            </div>
+        </div>
+    </div>
+    <div class="grid min-h-[400px] max-h-[400px]">
+        <div class="grid grid-cols-12 h-full">
+            <div class="col-span-2"></div>
+            <div class="col-span-10 p-6">
+                <app-user-settings />
             </div>
         </div>
     </div>
 </div>
-
-{{this.userInfoService.userdata()?.wishlist}}
