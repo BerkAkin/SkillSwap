@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { Brand } from '../brand/brand';
 import { AuthService } from '../../features/auth/services/auth-service';
 import { ClickOutsideDirective } from '../../core/directives/click-outside.directive';
@@ -11,7 +11,7 @@ import { LoginPopup } from '../../features/auth/components/login-popup/login-pop
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, Brand, LoginPopup, ClickOutsideDirective, PopupWrapperComponent, ProfilePopupComponent, ClickableComponent],
+  imports: [RouterLink, Brand, LoginPopup, ClickOutsideDirective, PopupWrapperComponent, ProfilePopupComponent, ClickableComponent],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
