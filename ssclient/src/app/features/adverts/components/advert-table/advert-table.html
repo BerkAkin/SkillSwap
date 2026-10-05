@@ -17,7 +17,7 @@
       </tr>
     </thead>
     <tbody>
-      @for (advert of data()?.data; track advert.id) {
+      @for (advert of data(); track advert.id) {
       <tr class="hover:bg-gray-50 text-sm text-gray-600 font-rubik cursor-pointer">
         <td class="p-4">
           <p class="block">{{ advert.skill.name }}</p>
