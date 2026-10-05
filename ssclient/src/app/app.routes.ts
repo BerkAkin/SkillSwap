@@ -4,7 +4,6 @@ import { Adverts } from './pages/adverts/adverts';
 import { Register } from './pages/register/register';
 import { UserAdverts } from './pages/user/user-adverts/user-adverts';
 import { UserProfile } from './pages/user/user-profile/user-profile';
-import { UserSettings } from './pages/user/user-settings/user-settings';
 
 export const routes: Routes = [
   {
@@ -27,10 +26,6 @@ export const routes: Routes = [
   {
     path: 'user-profile',
     component: UserProfile,
-  },
-  {
-    path: 'user-settings',
-    component: UserSettings
   },
   {
     path: 'register',
