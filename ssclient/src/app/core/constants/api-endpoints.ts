@@ -11,5 +11,11 @@ export const API_ENDPOINTS = {
     },
     skills: {
         getAll: `${environment.apiUrl}/skills`
+    },
+    userInfo: {
+        getInfo: `${environment.apiUrl}/me`
+    },
+    achievements: {
+        getAchievements: `${environment.apiUrl}/achievements`
     }
 }
