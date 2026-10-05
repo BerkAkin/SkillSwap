@@ -5,10 +5,11 @@ import { IInfoCardModel } from '../../features/infos/models/IInfoCardModel';
 import { InfoSection } from '../../features/infos/components/info-section/info-section';
 import { ICommentCardModel } from '../../features/infos/models/ICommentCardModel';
 import { CommentCard } from '../../features/comments/components/comment-card/comment-card';
+import { TopInfo } from '../../features/infos/components/top-info/top-info';
 
 @Component({
   selector: 'app-home',
-  imports: [InfoBox, InfoCard, InfoSection, CommentCard,],
+  imports: [InfoBox, InfoCard, InfoSection, CommentCard, TopInfo],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
