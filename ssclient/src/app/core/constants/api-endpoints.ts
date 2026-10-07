@@ -7,15 +7,19 @@ export const API_ENDPOINTS = {
     },
     adverts: {
         getAll: `${environment.apiUrl}/adverts`,
-
     },
     skills: {
         getAll: `${environment.apiUrl}/skills`
     },
-    userInfo: {
-        getInfo: `${environment.apiUrl}/me`
-    },
     achievements: {
         getAchievements: `${environment.apiUrl}/achievements`
+    },
+    settings: {
+        getSettings: `${environment.apiUrl}/settings`
+    },
+    me: {
+        info: `${environment.apiUrl}/me`,
+        skills: `${environment.apiUrl}/me/skills`,
+        wishlist: `${environment.apiUrl}/me/wishlist`
     }
 }
