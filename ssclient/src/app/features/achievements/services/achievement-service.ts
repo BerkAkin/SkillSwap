@@ -11,7 +11,7 @@ export class AchievementService {
 
     achievements = signal<IAchievementModel[] | null>(null);
 
-    getAchievements() {
+    loadAchievements() {
         if (this.achievements() !== null) {
             return;
         }
