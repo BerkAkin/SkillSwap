@@ -13,11 +13,11 @@ export class UserInfoService {
     constructor(private httpClient: HttpClient) { }
     userdata = signal<IUserDataModel | null>(null);
 
-    getUserData() {
+    loadUserData() {
         if (this.userdata() !== null) {
             return;
         }
-        return this.httpClient.get<IUserDataResponseModel>(API_ENDPOINTS.userInfo.getInfo)
+        return this.httpClient.get<IUserDataResponseModel>(API_ENDPOINTS.me.info)
             .pipe(tap(resp => { }))
             .subscribe({
                 next: response => { this.userdata.set(response.data); console.log(this.userdata()) },
