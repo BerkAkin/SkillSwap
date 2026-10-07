@@ -1,7 +1,7 @@
 <div>
-    <div class="border border-gray-200 min-h-[200px]"></div>
+    <div class="border border-gray-300 min-h-[200px]"></div>
 </div>
-<div class="my-4">
+<div class="mb-6 mt-4">
     <h2 class="text-3xl text-gray-700 font-semibold font-rubik">
         {{this.userInfoService.userdata()?.firstname}}
         {{this.userInfoService.userdata()?.lastname}}
@@ -10,42 +10,42 @@
 <div class="space-y-1">
     <div>
         <p class="text-gray-700 font-semibold">E-Mail:
-            <span class="text-gray-400 font-normal">
+            <span class="text-gray-600 font-normal text-sm">
                 {{this.userInfoService.userdata()?.email}}
             </span>
         </p>
     </div>
     <div>
         <p class="text-gray-700 font-semibold">Phone:
-            <span class="text-gray-400 font-normal">
+            <span class="text-gray-600 font-normal text-sm">
                 {{this.userInfoService.userdata()?.phone_number}}
             </span>
         </p>
     </div>
     <div>
         <p class="text-gray-700 font-semibold">Gender:
-            <span class="text-gray-400 font-normal">
+            <span class="text-gray-600 font-normal text-sm">
                 {{this.userInfoService.userdata()?.gender}}
             </span>
         </p>
     </div>
     <div>
         <p class="text-gray-700 font-semibold">Join:
-            <span class="text-gray-400 font-normal">
+            <span class="text-gray-600 font-normal text-sm">
                 {{this.userInfoService.userdata()?.register_date}}
             </span>
         </p>
     </div>
     <div>
         <p class="text-gray-700 font-semibold">Role:
-            <span class="text-gray-400 font-normal">
+            <span class="text-gray-600 font-normal text-sm">
                 {{this.userInfoService.userdata()?.role}}
             </span>
         </p>
     </div>
     <div>
         <p class="text-gray-700 font-semibold">Active:
-            <span class="text-gray-400 font-normal">
+            <span class="text-gray-600 font-normal text-sm">
                 {{this.userInfoService.userdata()?.isActive}}
             </span>
         </p>
