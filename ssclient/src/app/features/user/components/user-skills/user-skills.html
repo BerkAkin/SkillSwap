@@ -1,47 +1,60 @@
 <div class=" min-h-[200px]">
     <div class="flex justify-between">
-        <h4 class="text-gray-700 text-xl font-semibold">Skills</h4>
+        <h4 class="text-gray-700 text-xl font-semibold font-rubik">Skills
+            <span class="text-gray-400 border-b border-gray-300 text-base mx-1 font-normal">Your
+                available
+                skills !</span>
+        </h4>
         <div class="space-x-2">
-            <select
-                class="w-[120px] text-sm p-1 text-gray-600 border shadow-sm bg-white border-gray-200 focus:outline-none font-semibold">
-                <option value="">Skill</option>
+            <select name="skillSelect" [(ngModel)]="currentSkillSelectValue"
+                class="w-[120px] text-sm p-1 text-gray-600 border shadow-xs bg-white border-gray-300 focus:outline-none font-semibold">
+                <option value="" selected>Select A Skill</option>
+                @for(skill of skillService.skills();track skill.id){
+                <option [value]="skill.id">{{skill.name}}</option>
+                }
             </select>
             <app-clickable-component
-                [properties]="{type:'button',colorScheme:'emerald',text:'+', btnFn:()=>addSkill('1','skills')}" />
+                [properties]="{type:'button',colorScheme:'emerald',text:'+', btnFn:()=>this.userSkillService.addSkill(currentSkillSelectValue,'skills')}" />
         </div>
     </div>
     <div class="my-2 max-h-[150px] overflow-auto">
         @for(skill of this.userInfoService.userdata()?.skills; track skill.id){
         <p
-            class="me-2 my-2 py-1 ps-2 inline-block max-w-[300px] min-w-[60px] text-sm bg-gray-700 text-white font-semibold">
+            class="me-2 my-2 py-1 ps-2 inline-block max-w-[300px] min-w-[60px] text-sm text-gray-600 border border-gray-300">
             ✦ {{skill.name}}
             <app-clickable-component class="mx-1"
-                [properties]="{type:'button',colorScheme:'red',text:'X', btnFn:()=>removeSkill(skill.id,'skills')}" />
+                [properties]="{type:'button',colorScheme:'red',text:'X', btnFn:()=>this.userSkillService.removeSkill(skill.id,'skills')}" />
         </p>
         }
     </div>
 </div>
 <div class=" min-h-[300px] max-h-[300px]">
     <div class="flex justify-between">
-        <h4 class="text-gray-700 text-xl font-semibold">Wishlist</h4>
+        <h4 class="text-gray-700 text-xl font-semibold font-rubik">Wishlist
+            <span class="text-gray-400 border-b border-gray-300 text-base mx-1 font-normal">Skills
+                you wish to learn !</span>
+        </h4>
         <div class="space-x-2">
-            <select
-                class="w-[120px] text-sm p-1 text-gray-600 border shadow-sm bg-white border-gray-200 focus:outline-none font-semibold">
-                <option value="">Skill</option>
+            <select [(ngModel)]="currentWishlistSelectValue"
+                class="w-[120px] text-sm p-1 text-gray-600 border shadow-xs bg-white border-gray-300 focus:outline-none font-semibold">
+                <option value="" selected>Select A Skill</option>
+                @for(skill of skillService.skills();track skill.id){
+                <option [value]="skill.id">{{skill.name}}</option>
+                }
             </select>
             <app-clickable-component
-                [properties]="{type:'button',colorScheme:'emerald',text:'+', btnFn:()=>addSkill('1','wishlist')}" />
+                [properties]="{type:'button',colorScheme:'emerald',text:'+', btnFn:()=>this.userSkillService.addSkill(this.currentWishlistSelectValue,'wishlist')}" />
         </div>
     </div>
-    <div class="my-2 border border-gray-200 max-h-[250px] h-[250px] overflow-auto">
+    <div class="my-2 border border-gray-300 max-h-[250px] h-[250px] overflow-auto">
         <table class="text-left w-full">
             <thead>
-                <tr class="font-rubik text-gray-700 text-sm border-b border-gray-200">
+                <tr class="font-rubik text-gray-700 text-sm border-b border-gray-300 font-semibold">
                     <th class="p-4">
-                        <p class="block font-normal">Name</p>
+                        <p class="block ">Name</p>
                     </th>
                     <th class="p-4">
-                        <p class="block font-normal">Description</p>
+                        <p class="block ">Description</p>
                     </th>
                     <th class="p-4">
                         <p class="block"></p>
@@ -50,16 +63,16 @@
             </thead>
             <tbody>
                 @for(wish of this.userInfoService.userdata()?.wishlist; track wish.id){
-                <tr class="hover:bg-gray-50 text-sm text-gray-600 font-rubik">
+                <tr class="hover:bg-gray-50 text-sm text-gray-600">
                     <td class="p-4">
                         <p class="block">{{ wish.name }}</p>
                     </td>
                     <td class="p-4">
                         <p class="block">{{ wish.description }}</p>
                     </td>
-                    <td class="text-end px-2 text-sky-500">
+                    <td class="text-end px-2">
                         <app-clickable-component
-                            [properties]="{type:'button',colorScheme:'red',text:'X', btnFn:()=>removeSkill(wish.id,'wishlist')}" />
+                            [properties]="{type:'button',colorScheme:'red',text:'X', btnFn:()=>this.userSkillService.removeSkill(wish.id,'wishlist')}" />
                     </td>
                 </tr>
                 }
