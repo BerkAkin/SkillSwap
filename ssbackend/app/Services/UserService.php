@@ -19,7 +19,10 @@ class UserService implements IUserService
             'skills:id,name',
             'wishlist:id,name,description',
             'credits:user_id,credit_points',
-            'settings:id,name,description',
+            'settings' => function ($query) {
+                $query->wherePivot('is_enabled', true)
+                    ->select('settings.id');
+            },
             'achievements:id,title,description',
             'socials:id,type',
         ])
