@@ -41,12 +41,9 @@ class GetResource extends JsonResource
         fn($achievement) =>
           $achievement->id,
       ),
-      'settings' => $this->settings->map(fn($setting) => [
-        'id' => $setting->id,
-        'name' => $setting->name,
-        'description' => $setting->description,
-        'is_enabled' => $setting->pivot->is_enabled,
-      ]),
+      'settings' => $this->settings->map(
+        fn($setting) => $setting->id,
+      ),
     ];
   }
 }
