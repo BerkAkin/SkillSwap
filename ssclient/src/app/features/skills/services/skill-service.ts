@@ -11,7 +11,7 @@ export class SkillService {
 
     constructor(private http: HttpClient) { }
 
-    getSkills() {
+    loadSkills() {
         if (this.skills() !== null) {
             return;
         }
