@@ -37,12 +37,5 @@ export interface IUserDataModel {
     ];
 
     'achievements': number[];
-    'settings': [
-        {
-            'id': string,
-            'name': string,
-            'description': string,
-            'is_enabled': string,
-        }
-    ];
+    'settings': number[];
 }
