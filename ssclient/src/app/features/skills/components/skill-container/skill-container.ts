@@ -13,6 +13,6 @@ export class SkillContainer implements OnInit {
   constructor(public skillService: SkillService) { }
 
   ngOnInit() {
-    this.skillService.getSkills();
+    this.skillService.loadSkills();
   }
 }
