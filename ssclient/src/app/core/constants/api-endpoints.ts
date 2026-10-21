@@ -20,6 +20,7 @@ export const API_ENDPOINTS = {
     me: {
         info: `${environment.apiUrl}/me`,
         skills: `${environment.apiUrl}/me/skills`,
-        wishlist: `${environment.apiUrl}/me/wishlist`
+        wishlist: `${environment.apiUrl}/me/wishlist`,
+        setting: `${environment.apiUrl}/me/settings`,
     }
 }
