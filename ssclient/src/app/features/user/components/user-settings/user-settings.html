@@ -6,7 +6,8 @@
     <div class="my-2 space-y-3 flex flex-col p-1">
         @for(setting of this.settingService.settings(); track setting.id){
         <label>
-            <input [checked]="this.userInfoService.userdata()?.settings?.includes(setting.id)" type="checkbox"
+            <input (change)="updateSetting(setting.id)"
+                [checked]="this.userInfoService.userdata()?.settings?.includes(setting.id)" type="checkbox"
                 class="chck">
             <span class="mx-1 text-gray-700 text-sm">{{setting.name}}</span>
         </label>
