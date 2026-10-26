@@ -1,14 +1,61 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { UserInfoService } from '../../services/user-info-service';
+import { HttpClient } from '@angular/common/http';
+import { IUserInfoUpdateResponseModel } from '../../models/IUserInfoUpdateResponseModel';
+import { API_ENDPOINTS } from '../../../../core/constants/api-endpoints';
+import { FormsModule } from '@angular/forms';
+import { ClickableComponent } from '../../../general/components/clickable-component/clickable-component';
+
+type EditableKey = 'firstname' | 'lastname' | 'email' | 'phone_number';
 
 @Component({
   selector: 'app-user-info',
-  imports: [],
+  imports: [FormsModule, ClickableComponent],
   templateUrl: './user-info.html',
   styleUrl: './user-info.css',
 })
-export class UserInfo {
 
-  constructor(public userInfoService: UserInfoService) { }
+
+export class UserInfo {
+  constructor(public userInfoService: UserInfoService, private HttpClient: HttpClient) { }
+
+  editableFields: { key: EditableKey; label: string; }[] = [
+    {
+      key: 'firstname',
+      label: 'Firstname'
+    },
+    {
+      key: 'lastname',
+      label: 'Lastname'
+    },
+    {
+      key: 'email',
+      label: 'E-Mail'
+    },
+    {
+      key: 'phone_number',
+      label: 'Phone'
+    },
+  ];
+
+
+  selectedField = signal<string | null>(null);
+  selectedFieldValue = signal<string>("");
+
+  editField(key: EditableKey) {
+    this.selectedField.set(key);
+    this.selectedFieldValue.set(
+      String(this.userInfoService.userdata()?.[key] ?? '')
+    );
+  }
+
+  updateInfo() {
+    this.HttpClient.put<IUserInfoUpdateResponseModel>(API_ENDPOINTS.me.info, { type: this.selectedField(), value: this.selectedFieldValue() })
+      .subscribe({
+        next: (response) => { console.log(response) },
+        error: (error) => { console.log(error) }
+      })
+    console.log("oP DONE");
+  }
 
 }
