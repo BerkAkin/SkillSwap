@@ -13,7 +13,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-#[Fillable(['firstname','lastname', 'email', 'password','gender','phone_number'])]
+#[Fillable(['firstname', 'lastname', 'email', 'password', 'gender', 'phone_number', 'isActive'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -30,11 +30,12 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
-            'role'=> RoleTypes::class,
+            'role' => RoleTypes::class,
         ];
     }
 
-    public function skills(){
+    public function skills()
+    {
         return $this->belongsToMany(Skill::class);
     }
 
@@ -48,43 +49,51 @@ class User extends Authenticatable
         );
     }
 
-    public function credits(){
+    public function credits()
+    {
         return $this->hasOne(Credit::class);
     }
 
-    public function settings(){
+    public function settings()
+    {
         return $this->belongsToMany(Setting::class)
-        ->using(SettingUser::class)
-        ->withPivot('is_enabled')
-        ->withTimestamps();
+            ->using(SettingUser::class)
+            ->withPivot('is_enabled')
+            ->withTimestamps();
     }
-    
-    public function scores(){
+
+    public function scores()
+    {
         return $this->hasMany(Score::class);
     }
 
-    public function achievements(){
+    public function achievements()
+    {
         return $this->belongsToMany(Achievement::class);
     }
 
-    public function adverts(){
+    public function adverts()
+    {
         return $this->hasMany(Advert::class);
     }
 
-    public function offers(){
+    public function offers()
+    {
         return $this->hasMany(Offer::class);
     }
 
-    public function meeting(){
+    public function meeting()
+    {
         return $this->belongsToMany(Meeting::class);
     }
 
-    public function socials(){
+    public function socials()
+    {
         return $this->belongsToMany(Social::class)
-        ->using(SocialUser::class)
-        ->withPivot('url')
-        ->withTimestamps();
+            ->using(SocialUser::class)
+            ->withPivot('url')
+            ->withTimestamps();
     }
-    
+
 
 }
