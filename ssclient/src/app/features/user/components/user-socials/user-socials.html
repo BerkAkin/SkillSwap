@@ -1,13 +1,23 @@
-<div class="space-y-4">
-    <p class="text-gray-700 font-semibold text-xl font-rubik">Socials</p>
+<div class="space-y-3">
+    <p class="text-gray-700 font-semibold text-xl font-rubik">Socials
+        <span class="text-gray-400 border-b border-gray-300 text-base mx-1 font-normal"> Click to edit</span>
+    </p>
     @for(social of this.userInfoService.userdata()?.socials; track social.id){
     <div>
+        <p><span (click)="setSelectedSocial(social.id,social.url)" class="social-hover">{{social.type}}</span></p>
         <div class="flex justify-between">
-            <p class="text-gray-700 font-semibold">{{social.type}}</p>
+            @if(selectedSocial()===social.id){
+            <input class="border-1 border-gray-300 px-2 max-w-[75%] text-sm text-gray-700 focus:outline-none"
+                [(ngModel)]="selectedSocialInput">
             <app-clickable-component
-                [properties]="{type:'button',text:'X', colorScheme:'red', btnFn:()=>this.removeSocial(social.type)}" />
+                [properties]="{type:'button',text:'✓', colorScheme:'emerald', btnFn:()=>this.updateSocial()}" />
+            }
+            @else {
+            <p class="text-gray-700 font-normal text-sm ps-2">
+                {{social.url}}
+            </p>
+            }
         </div>
-        <p class="text-gray-600 font-normal text-sm">{{social.url}}</p>
     </div>
     }
 </div>
