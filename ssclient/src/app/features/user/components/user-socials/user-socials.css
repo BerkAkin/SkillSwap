@@ -1,0 +1,5 @@
+@reference "tailwindcss";
+
+.social-hover {
+    @apply border-gray-700 bg-white hover:bg-gray-700 hover:text-white text-gray-700 border cursor-pointer font-semibold text-sm px-2;
+}
