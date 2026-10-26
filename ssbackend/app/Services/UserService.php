@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Contracts\IUserService;
+use App\DTOs\UserDTOs\UpdateInfoDTO;
 use App\DTOs\UserDTOs\UpdateSocialDTO;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +29,14 @@ class UserService implements IUserService
         ])
             ->findOrFail(Auth::id());
     }
+
+    public function updateInfo(UpdateInfoDTO $DTO): string
+    {
+        $user = Auth::user();
+        $user->update([$DTO->type => $DTO->value]);
+        return "Info updated succesfully";
+    }
+
     public function updateSetting(int $id): void
     {
         $user = Auth::user();
