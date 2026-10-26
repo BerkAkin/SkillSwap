@@ -29,6 +29,7 @@ Route::middleware(['auth:sanctum', 'throttle:general'])->group(function () {
 
     //USER GENERAL INFO
     Route::get('/me', [UserController::class, 'meInfo']);
+    Route::put('/me', [UserController::class, 'updateMeInfo']);
     Route::put('/me/settings/{id}', [UserController::class, 'updateSetting']);
     Route::put('/me/socials/{id}', [UserController::class, 'updateSocial']);
 
