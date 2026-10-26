@@ -1,53 +1,64 @@
 <div>
     <div class="border border-gray-300 min-h-[200px]"></div>
 </div>
-<div class="mb-6 mt-4">
-    <h2 class="text-3xl text-gray-700 font-semibold font-rubik">
-        {{this.userInfoService.userdata()?.firstname}}
-        {{this.userInfoService.userdata()?.lastname}}
-    </h2>
-</div>
-<div class="space-y-1">
-    <div>
-        <p class="text-gray-700 font-semibold">E-Mail:
-            <span class="text-gray-600 font-normal text-sm">
-                {{this.userInfoService.userdata()?.email}}
+<div class="space-y-3">
+    <p class="text-gray-700 font-semibold text-xl font-rubik">Information
+        <span class="text-gray-400 border-b border-gray-300 text-base mx-1 font-normal"> Click to edit</span>
+    </p>
+    <div class="space-y-1">
+        @for(field of editableFields; track field.key)
+        {
+        @if(selectedField()===field.key){
+        <div>
+            <span class="info-hover">
+                {{ field.label }}:
             </span>
-        </p>
+            <input [(ngModel)]="selectedFieldValue"
+                class="px-2 border border-gray-300 text-sm text-gray-600 font-normal focus:outline-none max-w-[40%] mx-2">
+            <app-clickable-component
+                [properties]="{type:'button',text:'✓', colorScheme:'emerald', btnFn:()=>this.updateInfo()}" />
+        </div>
+        }
+        @else {
+        <div>
+            <span class="info-hover" (click)="this.editField(field.key)">
+                {{ field.label }}:
+            </span>
+            <span class="text-gray-600 font-normal text-sm mx-2">
+                {{this.userInfoService.userdata()?.[field.key]}}</span>
+        </div>
+        }
+        }
     </div>
-    <div>
-        <p class="text-gray-700 font-semibold">Phone:
-            <span class="text-gray-600 font-normal text-sm">
-                {{this.userInfoService.userdata()?.phone_number}}
-            </span>
-        </p>
-    </div>
-    <div>
-        <p class="text-gray-700 font-semibold">Gender:
-            <span class="text-gray-600 font-normal text-sm">
-                {{this.userInfoService.userdata()?.gender}}
-            </span>
-        </p>
-    </div>
-    <div>
-        <p class="text-gray-700 font-semibold">Join:
-            <span class="text-gray-600 font-normal text-sm">
-                {{this.userInfoService.userdata()?.register_date}}
-            </span>
-        </p>
-    </div>
-    <div>
-        <p class="text-gray-700 font-semibold">Role:
-            <span class="text-gray-600 font-normal text-sm">
-                {{this.userInfoService.userdata()?.role}}
-            </span>
-        </p>
-    </div>
-    <div>
-        <p class="text-gray-700 font-semibold">Active:
-            <span class="text-gray-600 font-normal text-sm">
-                {{this.userInfoService.userdata()?.isActive}}
-            </span>
-        </p>
+
+    <div class="space-y-1">
+        <div>
+            <p class="text-gray-700 font-semibold">Gender:
+                <span class="text-gray-600 font-normal text-sm">
+                    {{this.userInfoService.userdata()?.gender}}
+                </span>
+            </p>
+        </div>
+        <div>
+            <p class="text-gray-700 font-semibold">Join:
+                <span class="text-gray-600 font-normal text-sm">
+                    {{this.userInfoService.userdata()?.register_date}}
+                </span>
+            </p>
+        </div>
+        <div>
+            <p class="text-gray-700 font-semibold">Role:
+                <span class="text-gray-600 font-normal text-sm">
+                    {{this.userInfoService.userdata()?.role}}
+                </span>
+            </p>
+        </div>
+        <div>
+            <p class="text-gray-700 font-semibold">Active:
+                <span class="text-gray-600 font-normal text-sm">
+                    {{this.userInfoService.userdata()?.isActive}}
+                </span>
+            </p>
+        </div>
     </div>
 </div>
