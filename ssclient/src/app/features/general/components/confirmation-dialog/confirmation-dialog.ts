@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 
 @Component({
   selector: 'app-confirmation-dialog',
@@ -8,8 +8,9 @@ import { Component, input } from '@angular/core';
 })
 export class ConfirmationDialog {
   description = input.required<string>();
-  confirmActionFn = input.required<() => any>();
-  confirm() {
-    this.confirmActionFn()();
+  confirmFunction = input.required<() => any>();
+
+  confirmAction() {
+    this.confirmFunction()();
   }
 }

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { ClickableComponent } from '../../../general/components/clickable-component/clickable-component';
 import { ModalControlService } from '../../../general/services/modal-control-service';
+import { ThisReceiver } from '@angular/compiler';
 import { ConfirmationDialog } from '../../../general/components/confirmation-dialog/confirmation-dialog';
+
 
 @Component({
   selector: 'app-user-operations',
@@ -10,18 +12,17 @@ import { ConfirmationDialog } from '../../../general/components/confirmation-dia
   styleUrl: './user-operations.css',
 })
 export class UserOperations {
+  constructor(public modalService: ModalControlService) { }
   ConfirmationDialog = ConfirmationDialog;
-  constructor(public modalControlService: ModalControlService) { }
 
-  openDeactivateDialog() {
-    this.modalControlService.setModal(
-      "Deactivate Your Account !",
+  openDeactivateModal() {
+    this.modalService.setModal(
       ConfirmationDialog,
+      "Deactivate Account !",
       {
-        description: "Are you really sure you want to deactivate your account ?",
-        confirmActionFn: () => { console.log("Your account is now deactivated") },
+        description: "Are you sure you really wanna deactivate your account",
+        confirmFunction: () => console.log("asds")
       }
-
     );
   }
 }

@@ -1,25 +1,23 @@
 import { Injectable, signal, Type } from '@angular/core';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
+
 
 export class ModalControlService {
 
-    modalTitle = signal<string>("");
     modalType = signal<Type<unknown> | null>(null);
-    modalTypeParameters = signal<Record<string, unknown>>({});
+    modalTitle = signal<string>("");
+    modalTypeProperties = signal<Record<string, unknown>>({});
 
-    closeModal = () => {
-        this.modalType.set(null);
-    }
-
-    setModal = (
-        title: string,
-        type: Type<unknown>,
-        inputs: Record<string, unknown> = {},
-    ) => {
-        this.modalType.set(type);
+    setModal(type: Type<unknown>, title: string, typeProperties: Record<string, unknown>) {
         this.modalTitle.set(title);
-        this.modalTypeParameters.set(inputs)
+        this.modalType.set(type);
+        this.modalTypeProperties.set(typeProperties);
     }
 
+    closeModal() {
+        this.modalTitle.set("");
+        this.modalType.set(null);
+        this.modalTypeProperties.set({});
+    }
 }

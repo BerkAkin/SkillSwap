@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalControlService } from '../../services/modal-control-service';
-import { NgComponentOutlet } from '@angular/common'
-
+import { NgComponentOutlet } from '@angular/common';
 
 @Component({
   selector: 'app-modal-component',

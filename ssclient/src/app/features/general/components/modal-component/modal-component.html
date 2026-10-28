@@ -1,21 +1,18 @@
 @if(modalService.modalType()){
 <div class="modal-wrapper">
-    <div class="modal-content">
-        <div class="container-fluid min-w-[300px]">
-            <div class="grid grid-cols-12 border-b border-gray-300 py-1">
-                <div class="col-span-11">
-                    <p class="font-rubik font-semibold text-lg text-gray-700">{{this.modalService.modalTitle()}}</p>
-                </div>
-                <div class="col-span-1">
-                    <button class="close-button" (click)="modalService.closeModal()">X</button>
-                </div>
+    <div class="modal-window">
+        <div class="grid grid-cols-12">
+            <div class="col-span-11">
+                <p class="text-gray-700 font-rubik font-semibold px-2 text-lg">{{modalService.modalTitle()}}</p>
+            </div>
+            <div class="col-span-1">
+                <button (click)="modalService.closeModal()" class="close-button">X</button>
             </div>
         </div>
-        <div class="modal-element my-4">
-            <ng-container
-                *ngComponentOutlet="modalService.modalType(); inputs:modalService.modalTypeParameters()"></ng-container>
+        <div class="modal-content">
+            <ng-container [ngComponentOutlet]="modalService.modalType()"
+                [ngComponentOutletInputs]="modalService.modalTypeProperties()"></ng-container>
         </div>
     </div>
 </div>
-
 }
