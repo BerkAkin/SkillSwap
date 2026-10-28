@@ -5,6 +5,12 @@
     </p>
     <div class="my-2 space-y-3 flex flex-col p-1 items-end">
         <app-clickable-component [properties]="{type:'button',colorScheme:'sky', text:'Change Password'}" />
-        <app-clickable-component [properties]="{type:'button',colorScheme:'red', text:'Deactivate Account'}" />
+        <app-clickable-component [properties]="{
+            type:'button',
+            colorScheme:'red', 
+            btnType:'button',
+            text:'Deactivate Account', 
+            btnFn:()=>openDeactivateDialog(), 
+        }" />
     </div>
 </div>
