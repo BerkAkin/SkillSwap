@@ -9,10 +9,10 @@ export class ModalControlService {
     modalTitle = signal<string>("");
     modalTypeProperties = signal<Record<string, unknown>>({});
 
-    setModal(type: Type<unknown>, title: string, typeProperties: Record<string, unknown>) {
+    setModal(type: Type<unknown>, title: string, typeProperties?: Record<string, unknown>) {
         this.modalTitle.set(title);
         this.modalType.set(type);
-        this.modalTypeProperties.set(typeProperties);
+        this.modalTypeProperties.set(typeProperties ?? {});
     }
 
     closeModal() {
