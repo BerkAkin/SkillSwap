@@ -1,0 +1,5 @@
+@reference "tailwindcss";
+
+.btn {
+    @apply transition border border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white font-semibold w-[25%] cursor-pointer;
+}
