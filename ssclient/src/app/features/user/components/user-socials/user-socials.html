@@ -4,10 +4,10 @@
     </p>
     @for(social of this.userInfoService.userdata()?.socials; track social.id){
     <div>
-        <p><span (click)="setSelectedSocial(social.id,social.url)" class="social-hover">{{social.type}}</span></p>
-        <div class="flex">
+        <div>
+            <span (click)="setSelectedSocial(social.id,social.url)" class="social-hover">{{social.type}}:</span>
             @if(selectedSocial()===social.id){
-            <input class="border-1 border-gray-300 px-2 max-w-[40%] text-sm text-gray-700 focus:outline-none me-2"
+            <input class="border-1 border-gray-300 px-2 max-w-[40%] text-sm text-gray-700 focus:outline-none mx-2"
                 [(ngModel)]="selectedSocialInput">
             <app-clickable-component
                 [properties]="{type:'button',text:'✓', colorScheme:'emerald', btnFn:()=>this.updateSocial()}" />
