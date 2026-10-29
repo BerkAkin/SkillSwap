@@ -4,8 +4,7 @@ namespace App\Contracts;
 
 use App\DTOs\AdvertDTOs\StoreDTO;
 use App\Models\Advert;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 interface IAdvertService
 {
@@ -13,5 +12,5 @@ interface IAdvertService
     public function GetAll();
     public function Find(int $id);
     public function Destroy(int $id);
-    public function myAdverts(): Collection;
+    public function myAdverts(): LengthAwarePaginator;
 }
