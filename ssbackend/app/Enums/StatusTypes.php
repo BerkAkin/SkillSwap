@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum StatusTypes:string
+enum StatusTypes: string
 {
     case Pending = 'pending';
     case Accepted = 'accepted';
@@ -10,5 +10,5 @@ enum StatusTypes:string
     case Completed = 'completed';
     case Conflicted = 'conflicted';
     case Open = 'open';
-    case Close = 'close';
+    case Closed = 'closed';
 }
