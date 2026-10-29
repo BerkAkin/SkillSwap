@@ -13,5 +13,5 @@
 }
 
 .modal-content {
-    @apply mt-2 p-1 space-y-3;
+    @apply mt-2 space-y-3;
 }

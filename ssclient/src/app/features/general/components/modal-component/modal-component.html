@@ -1,9 +1,9 @@
 @if(modalService.modalType()){
 <div class="modal-wrapper">
     <div class="modal-window">
-        <div class="grid grid-cols-12">
+        <div class="grid grid-cols-12 border-b border-gray-300 pb-2">
             <div class="col-span-11">
-                <p class="text-gray-700 font-rubik font-semibold px-2 text-lg">{{modalService.modalTitle()}}</p>
+                <p class="text-gray-700 font-rubik font-semibold text-lg">{{modalService.modalTitle()}}</p>
             </div>
             <div class="col-span-1">
                 <button (click)="modalService.closeModal()" class="close-button">X</button>

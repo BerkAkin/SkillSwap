@@ -22,7 +22,7 @@ export class UserOperations {
       ConfirmationDialog,
       "Deactivate Account !",
       {
-        description: "Are you sure you really wanna deactivate your account",
+        description: "Are you sure you really wanna deactivate your account ?",
         confirmFunction: () => console.log("Hesap silindi")
       }
     );
