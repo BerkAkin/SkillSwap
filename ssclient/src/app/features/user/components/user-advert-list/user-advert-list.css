@@ -1,0 +1,13 @@
+@reference "tailwindcss";
+
+.col-def {
+    @apply flex items-center justify-center;
+}
+
+.line-wrapper {
+    @apply border border-gray-300 bg-white shadow-xs grid grid-cols-12 min-h-[50px] cursor-pointer;
+}
+
+.page-button {
+    @apply border border-gray-700 text-gray-700 hover:bg-gray-700 hover:text-white font-semibold cursor-pointer transition px-1;
+}
