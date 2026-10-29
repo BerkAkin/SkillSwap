@@ -62,9 +62,10 @@ class AdvertController extends Controller
     public function myAdverts(): JsonResponse
     {
         $result = $this->service->myAdverts();
+
         return response()->json([
             'message' => 'Your adverts fetched successfully',
-            'data' => GetResource::collection($result),
+            'data' => $result,
         ]);
     }
 
