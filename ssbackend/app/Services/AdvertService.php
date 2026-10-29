@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Collection;
@@ -110,9 +111,9 @@ class AdvertService implements IAdvertService
         Cache::tags(['adverts'])->flush();
     }
 
-    public function myAdverts(): Collection
+    public function myAdverts(): LengthAwarePaginator
     {
-        return $this->model::with(['chats'])->where('user_id', Auth::id())->get();
+        return $this->model::with(['user:id,firstname', 'skill:id,name,description',])->where('user_id', Auth::id())->paginate(8);
     }
 
 }
