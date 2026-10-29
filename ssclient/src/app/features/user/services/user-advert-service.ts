@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-
-import { IUserAdvertResponseModel } from '../../../pages/user/models/IUserAdvertsResponseModel';
 import { API_ENDPOINTS } from '../../../core/constants/api-endpoints';
+import { IUserAdvertResponseModel } from '../models/IUserAdvertsResponseModel';
 
 @Injectable({ providedIn: 'root' })
 

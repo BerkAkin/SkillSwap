@@ -4,8 +4,8 @@ import { ClickableComponent } from '../../../general/components/clickable-compon
 import { HttpClient } from '@angular/common/http';
 import { API_ENDPOINTS } from '../../../../core/constants/api-endpoints';
 import { tap } from 'rxjs';
-import { IUserDataResponseModel } from '../../../../pages/user/models/IUserDataResponseModel';
 import { FormsModule } from '@angular/forms';
+import { IUserDataResponseModel } from '../../models/IUserDataResponseModel';
 
 @Component({
   selector: 'app-user-socials',
