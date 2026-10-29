@@ -34,9 +34,10 @@ Route::middleware(['auth:sanctum', 'throttle:general'])->group(function () {
     Route::put('/me/socials/{id}', [UserController::class, 'updateSocial']);
 
     //ADVERTS
+    Route::get('/me/adverts', [AdvertController::class, 'myAdverts']);
+    Route::post('/me/adverts/{id}', [AdvertController::class, 'meAdvertDetails']);
     Route::post('/adverts', [AdvertController::class, 'store']);
     Route::delete('/adverts/{id}', [AdvertController::class, 'destroy']);
-    Route::get('/me/adverts', [AdvertController::class, 'myAdverts']);
 
     //OFFERS
     Route::get('adverts/{advertId}/offers', [OfferController::class, 'index']);
