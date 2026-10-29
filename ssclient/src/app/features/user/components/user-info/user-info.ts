@@ -1,8 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { UserInfoService } from '../../services/user-info-service';
 import { HttpClient } from '@angular/common/http';
-import { IUserInfoUpdateResponseModel } from '../../models/IUserInfoUpdateResponseModel';
-import { API_ENDPOINTS } from '../../../../core/constants/api-endpoints';
 import { FormsModule } from '@angular/forms';
 import { ClickableComponent } from '../../../general/components/clickable-component/clickable-component';
 
@@ -50,12 +48,7 @@ export class UserInfo {
   }
 
   updateInfo() {
-    this.HttpClient.put<IUserInfoUpdateResponseModel>(API_ENDPOINTS.me.info, { type: this.selectedField(), value: this.selectedFieldValue() })
-      .subscribe({
-        next: (response) => { console.log(response) },
-        error: (error) => { console.log(error) }
-      })
-    console.log("oP DONE");
+    this.userInfoService.updateInfo(this.selectedField()!, this.selectedFieldValue()!);
   }
 
 }
