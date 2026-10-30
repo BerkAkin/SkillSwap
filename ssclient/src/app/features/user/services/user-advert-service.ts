@@ -11,7 +11,7 @@ export class UserAdvertService {
     userAdvertsResponse = signal<IUserAdvertResponseModel | null>(null);
 
     public loadUserAdverts(page: number = 1) {
-        this.httpClient.get<IUserAdvertResponseModel>(`${API_ENDPOINTS.me.userAdverts}?page=${page}`)
+        this.httpClient.get<IUserAdvertResponseModel>(`${API_ENDPOINTS.me.adverts}?page=${page}`)
             .subscribe({
                 next: (response) => { this.userAdvertsResponse.set(response); console.log(response) },
                 error: (err) => { console.log(err) }
