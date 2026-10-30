@@ -5,7 +5,6 @@ namespace App\Services;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Database\Eloquent\Collection;
 use App\Contracts\IAdvertService;
 use App\Models\Skill;
 use App\Models\Advert;
@@ -116,4 +115,8 @@ class AdvertService implements IAdvertService
         return $this->model::with(['user:id,firstname', 'skill:id,name,description',])->where('user_id', Auth::id())->paginate(8);
     }
 
+    public function myAdvertDetails(int $id)
+    {
+        return $this->model::where('user_id', Auth::id())->where('id', $id)->firstOrFail();
+    }
 }
