@@ -6,6 +6,8 @@ use App\Contracts\IAdvertService;
 use App\DTOs\AdvertDTOs\StoreDTO;
 use App\Http\Requests\AdvertRequests\StoreRequest;
 use App\Http\Resources\AdvertResource\GetResource;
+use App\Http\Resources\AdvertResource\UserAdvertDetailResource;
+use App\Http\Resources\AdvertResource\UserAdvertOffersGetResource;
 use App\Http\Resources\AdvertResource\UserGetResource;
 use Illuminate\Http\JsonResponse;
 
@@ -68,6 +70,15 @@ class AdvertController extends Controller
             'message' => 'Your adverts fetched successfully',
             'data' => new UserGetResource($result),
         ]);
+    }
+
+    public function myAdvertDetails(int $id): JsonResponse
+    {
+        $result = $this->service->myAdvertDetails($id);
+        return response()->json([
+            'message' => 'Details of advert fetched successfully',
+            'detail' => new UserAdvertDetailResource($result),
+        ], 200);
     }
 
 }
