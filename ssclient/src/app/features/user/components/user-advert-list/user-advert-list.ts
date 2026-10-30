@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserAdvertService } from '../../services/user-advert-service';
 import { InfoPillComponent } from '../../../general/components/info-pill-component/info-pill-component';
 import { DatePipe } from '@angular/common';
+import { UserAdvertDetailsService } from '../../services/user-advert-details-service';
 
 @Component({
   selector: 'app-user-advert-list',
@@ -10,5 +11,5 @@ import { DatePipe } from '@angular/common';
   styleUrl: './user-advert-list.css',
 })
 export class UserAdvertList {
-  constructor(public userAdvertService: UserAdvertService) { }
+  constructor(public userAdvertService: UserAdvertService, public userAdvertDetailsService: UserAdvertDetailsService) { }
 }
