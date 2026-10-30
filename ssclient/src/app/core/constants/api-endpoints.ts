@@ -7,6 +7,7 @@ export const API_ENDPOINTS = {
     },
     adverts: {
         getAll: `${environment.apiUrl}/adverts`,
+        offers: `${environment.apiUrl}/advert/offers`
     },
     skills: {
         getAll: `${environment.apiUrl}/skills`
@@ -23,6 +24,6 @@ export const API_ENDPOINTS = {
         wishlist: `${environment.apiUrl}/me/wishlist`,
         setting: `${environment.apiUrl}/me/settings`,
         social: `${environment.apiUrl}/me/socials`,
-        userAdverts: `${environment.apiUrl}/me/adverts`,
+        adverts: `${environment.apiUrl}/me/adverts`,
     }
 }
