@@ -35,12 +35,13 @@ Route::middleware(['auth:sanctum', 'throttle:general'])->group(function () {
 
     //ADVERTS
     Route::get('/me/adverts', [AdvertController::class, 'myAdverts']);
-    Route::post('/me/adverts/{id}', [AdvertController::class, 'meAdvertDetails']);
+    Route::get('/me/adverts/{id}', [AdvertController::class, 'myAdvertDetails']);
     Route::post('/adverts', [AdvertController::class, 'store']);
     Route::delete('/adverts/{id}', [AdvertController::class, 'destroy']);
 
     //OFFERS
-    Route::get('adverts/{advertId}/offers', [OfferController::class, 'index']);
+    Route::get('advert/offers', [OfferController::class, 'index']);
+
     Route::post('adverts/{advertId}/offers', [OfferController::class, 'store']);
     Route::get('/offers/{id}', [OfferController::class, 'show']);
     Route::delete('/me/offers/{id}', [OfferController::class, 'destroy']);
