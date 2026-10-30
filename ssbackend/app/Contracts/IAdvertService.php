@@ -13,4 +13,5 @@ interface IAdvertService
     public function Find(int $id);
     public function Destroy(int $id);
     public function myAdverts(): LengthAwarePaginator;
+    public function myAdvertDetails(int $id);
 }
