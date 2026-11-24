@@ -7,7 +7,8 @@ export const API_ENDPOINTS = {
     },
     adverts: {
         getAll: `${environment.apiUrl}/adverts`,
-        offers: `${environment.apiUrl}/advert/offers`
+        offers: `${environment.apiUrl}/advert/offers`,
+        chat: `${environment.apiUrl}/chats`,
     },
     skills: {
         getAll: `${environment.apiUrl}/skills`
