@@ -5,7 +5,7 @@
 }
 
 .line-wrapper {
-    @apply border border-gray-300 bg-white shadow-xs grid grid-cols-12 h-10 cursor-pointer;
+    @apply border border-gray-300 bg-white shadow-xs grid grid-cols-12 h-10 cursor-pointer my-2;
 }
 
 
