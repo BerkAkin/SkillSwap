@@ -22,7 +22,7 @@ class OfferService implements IOfferService
     {
         return Offer::where('advert_id', request()->query('advertId', 1))->whereHas('advert', function ($query) {
             return $query->where('user_id', Auth::id());
-        })->with(['user:id,firstname', 'skill:id,name,description'])->paginate(1);
+        })->with(['user:id,firstname', 'skill:id,name,description'])->paginate(6);
     }
 
 
@@ -49,7 +49,6 @@ class OfferService implements IOfferService
 
     public function cancelOffer(int $id): Offer
     {
-
         $offer = Offer::where('user_id', Auth::id())->findOrFail($id);
         $offer->delete();
         return $offer;
