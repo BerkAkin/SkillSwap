@@ -9,21 +9,25 @@ use App\Http\Resources\ChatResources\GetResource;
 
 class ChatController extends Controller
 {
-    public function __construct(private readonly IChatService $service){}
-
-    public function getMessages(int $chatId){
-        $result = $this->service->GetAll($chatId);
-        return response()->json([
-            'message'=> 'messages fetched successfully',    
-            'data'=> GetResource::collection($result),
-        ],200);
+    public function __construct(private readonly IChatService $service)
+    {
     }
-    public function sendMessage(StoreRequest $request, int $id){
-        $dto = StoreDTO::fromArray($request->validated(),$id);
+
+    public function getMessages(int $offerId)
+    {
+        $result = $this->service->GetAll($offerId);
+        return response()->json([
+            'message' => 'messages fetched successfully',
+            'data' => GetResource::collection($result),
+        ], 200);
+    }
+    public function sendMessage(StoreRequest $request, int $chatId)
+    {
+        $dto = StoreDTO::fromArray($request->validated(), $chatId);
         $result = $this->service->Create($dto);
         return response()->json([
-            'message'=> 'message sent successfully',    
-            'data'=> $result
-        ],200);
+            'message' => 'message sent successfully',
+            'data' => $result
+        ], 200);
     }
 }
