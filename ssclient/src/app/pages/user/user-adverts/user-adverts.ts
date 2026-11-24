@@ -3,10 +3,11 @@ import { AdvertCreator } from '../../../features/adverts/components/advert-creat
 import { UserAdvertList } from '../../../features/user/components/user-advert-list/user-advert-list';
 import { UserAdvertService } from '../../../features/user/services/user-advert-service';
 import { UserAdvertDetails } from '../../../features/user/components/user-advert-details/user-advert-details';
+import { UserOfferChat } from '../../../features/user/components/user-offer-chat/user-offer-chat';
 
 @Component({
   selector: 'app-my-adverts',
-  imports: [AdvertCreator, UserAdvertList, UserAdvertDetails],
+  imports: [AdvertCreator, UserAdvertList, UserAdvertDetails, UserOfferChat],
   templateUrl: './user-adverts.html',
   styleUrl: './user-adverts.css',
 })
