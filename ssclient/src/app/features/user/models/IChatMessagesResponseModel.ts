@@ -1,6 +1,6 @@
-import { IChatMessageModel } from "./IChatMessageModel";
+import { IChatMessageDataModel } from "./IChatMessageDataModel";
 
 export interface IChatMessagesResponseModel {
-    'message': string;
-    'data': IChatMessageModel[];
+    message: string;
+    response: IChatMessageDataModel;
 }
