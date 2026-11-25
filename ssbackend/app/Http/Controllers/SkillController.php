@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Contracts\ISkillService;
 use Illuminate\Http\JsonResponse;
 use App\Http\Requests\SkillRequests\StoreRequest;
-use App\Http\Resources\SkillResources\GetResource;
 use App\DTOs\SkillDTOs\StoreDTO;
 use App\DTOs\SkillDTOs\UpdateDTO;
 use App\Http\Requests\SkillRequests\UpdateRequest;
