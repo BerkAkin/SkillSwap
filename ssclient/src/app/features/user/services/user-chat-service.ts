@@ -48,6 +48,13 @@ export class UserChatService {
             });
     }
 
+    clearChatMessages() {
+        this.chatMessages.set(null);
+        this.current_page.set(1);
+        this.total_records.set(0);
+        this.last_page.set(1);
+    }
+
     private reverseMessages(messages: IChatMessageModel[]): IChatMessageModel[] {
         return messages.slice().reverse();
     }
