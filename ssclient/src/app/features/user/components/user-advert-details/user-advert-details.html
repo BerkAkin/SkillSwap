@@ -96,7 +96,7 @@
             @if (this.userAdvertDetailService.offersResponse(); as response) {
 
             @for (offer of response.offers.data; track offer.id) {
-            <div class="line-wrapper" (click)="this.userChatService.getMessages(offer.id)">
+            <div class="line-wrapper" (click)="this.getMessages(offer.id)">
 
                 <div class="col-span-4 col-def">
                     <p class="text-sm text-gray-700 ">
