@@ -18,7 +18,7 @@ class ChatController extends Controller
         $result = $this->service->GetAll($offerId);
         return response()->json([
             'message' => 'messages fetched successfully',
-            'data' => GetResource::collection($result),
+            'response' => new GetResource($result),
         ], 200);
     }
     public function sendMessage(StoreRequest $request, int $chatId)
