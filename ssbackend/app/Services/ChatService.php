@@ -8,15 +8,16 @@ use App\Enums\StatusTypes;
 use App\Events\MessageSent;
 use App\Models\Chat;
 use App\Models\Message;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 
 class ChatService implements IChatService
 {
     protected string $model = Message::class;
 
-    public function GetAll(string $offerId): Collection
+    public function GetAll(string $offerId): LengthAwarePaginator
     {
+        $pageParam = request()->query('page', 1);
         $loggedInUser = Auth::id();
         $chat = Chat::where('offer_id', $offerId)
             ->where(function ($query) use ($loggedInUser) {
@@ -32,8 +33,8 @@ class ChatService implements IChatService
             where('chat_id', $chat->id)
             ->select('user_id', 'message', 'created_at')
             ->with(['user:id,firstname,lastname'])
-            ->orderBy('created_at', 'asc')
-            ->get();
+            ->orderBy('created_at', 'desc')
+            ->paginate(5, ['*'], 'page', $pageParam);
     }
 
     public function Create(StoreDTO $DTO): ?Message
