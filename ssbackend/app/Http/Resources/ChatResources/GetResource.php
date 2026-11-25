@@ -10,10 +10,17 @@ class GetResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'isMe' => $this->user_id === auth()->id(),
-            'user' => $this->user->firstname . ' ' . $this->user->lastname,
-            'message' => $this->message,
-            'date' => $this->created_at,
+            'current_page' => $this->currentPage(),
+            'total' => $this->total(),
+            'last_page' => $this->lastPage(),
+            'data' => $this->map(function ($item) {
+                return [
+                    'isMe' => $item->user_id === auth()->id(),
+                    'user' => $item->user->firstname . ' ' . $item->user->lastname,
+                    'message' => $item->message,
+                    'date' => $item->created_at,
+                ];
+            }),
         ];
     }
 }
