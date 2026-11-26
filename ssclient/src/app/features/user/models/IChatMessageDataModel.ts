@@ -1,8 +1,9 @@
 import { IChatMessageModel } from "./IChatMessageModel";
 
 export interface IChatMessageDataModel {
+    chat_id: number;
     current_page: number;
-    last_page: number;
     total: number;
-    data: IChatMessageModel[];
+    last_page: number;
+    messages: IChatMessageModel[];
 }
