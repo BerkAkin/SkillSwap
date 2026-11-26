@@ -8,33 +8,40 @@ use App\Enums\StatusTypes;
 use App\Events\MessageSent;
 use App\Models\Chat;
 use App\Models\Message;
-use Illuminate\Pagination\LengthAwarePaginator;
+
 use Illuminate\Support\Facades\Auth;
 
 class ChatService implements IChatService
 {
     protected string $model = Message::class;
 
-    public function GetAll(string $offerId): LengthAwarePaginator
+    public function GetAll(string $offerId): array
     {
         $pageParam = request()->query('page', 1);
         $loggedInUser = Auth::id();
+
         $chat = Chat::where('offer_id', $offerId)
             ->where(function ($query) use ($loggedInUser) {
                 $query->where('adverter_user_id', $loggedInUser)
                     ->orWhere('offerer_user_id', $loggedInUser);
-            })
-            ->first();
+            })->first();
 
         if (!$chat) {
             throw new \Exception('Conversation not exists');
         }
-        return $this->model::
+
+        $messages = $this->model::
             where('chat_id', $chat->id)
             ->select('user_id', 'message', 'created_at')
             ->with(['user:id,firstname,lastname'])
             ->orderBy('created_at', 'desc')
             ->paginate(5, ['*'], 'page', $pageParam);
+
+
+        return [
+            'chat' => $chat,
+            'messages' => $messages
+        ];
     }
 
     public function Create(StoreDTO $DTO): ?Message
@@ -51,7 +58,7 @@ class ChatService implements IChatService
             throw new \Exception('Conversation not exists');
         }
 
-        if ($chat->status == StatusTypes::Close) {
+        if ($chat->status == StatusTypes::Closed) {
             throw new \Exception('Conversation closed');
         }
 
