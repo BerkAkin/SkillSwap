@@ -13,7 +13,7 @@ export class UserAdvertDetails {
   constructor(public userAdvertDetailService: UserAdvertDetailsService, public userChatService: UserChatService) { }
 
   getMessages(offerId: number) {
-    this.userChatService.clearChatMessages();
+    this.userChatService.clearChatWindow();
     this.userChatService.getMessages(offerId);
   }
 }
