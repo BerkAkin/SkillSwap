@@ -9,5 +9,5 @@ use Illuminate\Pagination\LengthAwarePaginator;
 interface IChatService
 {
     public function Create(StoreDTO $DTO): ?Message;
-    public function GetAll(string $chatId): LengthAwarePaginator;
+    public function GetAll(string $chatId): array;
 }
