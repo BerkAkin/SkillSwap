@@ -34,8 +34,10 @@
                 }
                 }
             </div>
-            <div class="shrink-0 h-10 p-4 border-t border-gray-300 ">
-                s
+            <div class="shrink-0 border-t border-gray-300 flex">
+                <input class="message-input" type="text" [(ngModel)]="userMessage" placeholder="Message..." />
+                <app-clickable-component class="send-button"
+                    [properties]="{type:'button',text:'Send',colorScheme:'stone', btnType:'button', btnFn:onSendMessage.bind(this)}" />
             </div>
         </div>
 
